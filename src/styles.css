@@ -1,1 +1,82 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --primary-10: #faf1cf;
+  --primary-20: #f5e49f;
+  --primary-30: #f0d66f;
+  --primary-40: #ebc93f;
+  --primary-50: #e7bc0f;
+  --primary-60: #b8960c;
+  --primary-70: #8a7009;
+  --primary-80: #5c4b05;
+  --primary-90: #2e2502;
+
+  /* Neutral Colors */
+  --white: #ffffff;
+  --neutral-10: #f2f2f2;
+  --neutral-20: #cccccc;
+  --neutral-30: #b2b2b2;
+  --neutral-40: #999999;
+  --neutral-50: #808080;
+  --neutral-60: #666666;
+  --neutral-70: #4c4c4c;
+  --neutral-80: #333333;
+  --neutral-90: #1a1a1a;
+  --black: #000000;
+
+  /* Semantic Colors */
+  --success: #27c237;
+  --info: #275bc2;
+  --warning: #eb8509;
+  --error: #f64e34;
+
+  /* Typography */
+  --font-primary: "Outfit", sans-serif;
+  --font-secondary: "Pacifico", cursive;
+}
+
+body {
+  font-family: var(--font-primary) antialiased;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+input,
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
