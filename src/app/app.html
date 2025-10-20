@@ -1,1 +1,16 @@
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<!-- App Layout -->
+
+<!-- TODO: Create a Layout Component in core/layout -->
+
+<div class="grid grid-cols-[auto_1fr] items-start">
+  <!-- Left Sidebar (hidden on small screens) -->
+  <app-sidebar />
+  <!-- Header & Navbar (Always visible) -->
+
+  <!-- Main Content -->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Footer -->

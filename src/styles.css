@@ -37,7 +37,9 @@
 }
 
 body {
-  font-family: var(--font-primary) antialiased;
+  font-family: var(--font-primary);
+  background-color: var(--neutral-90);
+  color: var(--neutral-10);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -79,4 +81,9 @@ button {
 
 button {
   cursor: pointer;
+}
+
+/* before:content-[\'\'] is in the template 'cause content-[''] is a dynamic value. */
+.active-item {
+  @apply relative before:w-3.5 before:h-8 before:bg-amber-300 before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:rounded-sm;
 }
