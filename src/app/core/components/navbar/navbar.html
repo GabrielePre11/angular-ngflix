@@ -1,0 +1,13 @@
+<ul class="hidden lg:flex items-center gap-5 text-xl">
+  @for (link of navList; track link.path) {
+  <li
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}"
+    [routerLink]="link.path"
+    [ngClass]="link.path === pathName ? 'text-[#e7bc0f]' : 'text-neutral-300'"
+    class="cursor-pointer hover:text-[#e7bc0f] transition-colors duration-300 ease-in-out"
+  >
+    {{link.name}}
+  </li>
+  }
+</ul>

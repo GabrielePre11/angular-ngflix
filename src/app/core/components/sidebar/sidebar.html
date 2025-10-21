@@ -1,6 +1,6 @@
 <aside
   aria-label="Left Sidebar"
-  class="flex flex-col w-[200px] max-w-[200px] p-5 border-r border-b rounded-br-lg border-neutral-400"
+  class="hidden md:flex top-0 left-0 flex-col w-[200px] max-w-[200px] p-5 border-l border-r border-b rounded-b-lg border-neutral-400 overflow-x-clip"
 >
   <!-- Logo -->
   <app-logo />
@@ -43,13 +43,13 @@
     </ul>
 
     <!-- Separator -->
-    <hr class="border-neutral-500 my-5" />
+    <hr class="border-neutral-500 my-3" />
 
     <!-- Infos Links -->
     <ul class="flex flex-col gap-5" role="navigation">
       @for (link of sideInfos; track link.name) {
       <li
-        class="relative"
+        class="relative cursor-pointer"
         [ngClass]="pathName === link.path 
           ? 'active-item before:content-[\'\']' 
           : ''"

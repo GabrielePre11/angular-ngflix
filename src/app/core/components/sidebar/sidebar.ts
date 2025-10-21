@@ -11,7 +11,6 @@ import {
   Phone,
   ShieldQuestionMark,
   Settings,
-  LucideIconData,
 } from 'lucide-angular';
 
 import { SIDE_LIST, SIDE_LIST_INFOS } from '@/app/constants/side-links';

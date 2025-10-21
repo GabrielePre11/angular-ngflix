@@ -1,6 +1,6 @@
 export const NAV_LIST: { name: string; path: string }[] = [
   {
-    name: 'Home',
+    name: 'All',
     path: '/',
   },
   {
@@ -10,5 +10,9 @@ export const NAV_LIST: { name: string; path: string }[] = [
   {
     name: 'Series',
     path: '/series',
+  },
+  {
+    name: 'Genres',
+    path: '/genres',
   },
 ];

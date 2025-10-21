@@ -1,0 +1,55 @@
+<header
+  class="flex items-center top-0 left-0 w-full md:px-4 py-3.5 z-50 bg-transparent"
+>
+  <div class="flex items-center justify-between w-full">
+    <!-- Logo -->
+    <app-logo class="md:hidden" />
+
+    <!-- Desktop Navigation -->
+    <app-navbar />
+  </div>
+
+  <!-- Header Actions -->
+  <div class="flex items-center gap-2.5 md:gap-3">
+    <!-- Desktop Searchbar -->
+    <app-desktop-searchbar />
+
+    <!-- Search Button -->
+    <button
+      class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+    >
+      <lucide-angular
+        [img]="Search"
+        aria-label="Search"
+        aria-hidden="true"
+        size="22"
+      ></lucide-angular>
+    </button>
+
+    <!-- Menu Button -->
+    <button
+      class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+    >
+      <lucide-angular
+        [img]="Menu"
+        aria-label="Menu"
+        aria-hidden="true"
+        size="22"
+      ></lucide-angular>
+    </button>
+
+    <!-- Login Button -->
+    <button
+      class="grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+      routerLink="/login"
+    >
+      <lucide-angular
+        [img]="LogIn"
+        aria-label="Login"
+        aria-hidden="true"
+        color="#e7bc0f"
+        size="22"
+      ></lucide-angular>
+    </button>
+  </div>
+</header>
