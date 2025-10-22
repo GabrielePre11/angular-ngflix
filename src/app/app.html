@@ -3,18 +3,20 @@
 <!-- TODO: Create a Layout Component in core/layout -->
 
 <app-container
-  className="grid items-start md:gap-3 grid-cols-1 md:grid-cols-[200px_1fr]"
+  className="grid items-start md:gap-6 grid-cols-1 md:grid-cols-[200px_1fr]"
 >
   <!-- Left Sidebar (hidden on small screens) -->
   <app-sidebar />
 
   <!-- Header & Navbar (Always visible) -->
-  <app-header />
+  <div>
+    <app-header />
 
-  <!-- Main Content -->
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+    <!-- Main Content -->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </app-container>
 
 <!-- Footer -->

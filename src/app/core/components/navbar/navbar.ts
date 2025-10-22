@@ -1,4 +1,4 @@
-import { NAV_LIST } from '@/app/constants/nav-links';
+import { NAV_LIST } from '@/app/models/constants/nav-links';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';

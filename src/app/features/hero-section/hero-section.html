@@ -1,0 +1,29 @@
+<section
+  aria-label="Hero Section"
+  class="grid grid-cols-1 lg:grid-cols-[1fr_250px] md:gap-6 mt-3"
+>
+  <!-- Main Banner -->
+  <div>
+    <img
+      src="hero-temp-slider.png"
+      alt="Hero Temporary Slider Image"
+      class="aspect-square sm:aspect-auto h-10 object-cover rounded-lg"
+      priority
+    />
+
+    <!-- Recommended Movies -->
+    <app-recommended-movies />
+  </div>
+
+  <!-- News -->
+  <div
+    class="relative hidden max-h-max lg:block before:content-[''] before:absolute before:inset-0 before:bg-[#e7bc0f] before:-rotate-1 before:rounded-lg before:-z-10"
+  >
+    <img
+      src="News.png"
+      alt="Hero News Image"
+      class="size-full object-cover"
+      priority
+    />
+  </div>
+</section>
