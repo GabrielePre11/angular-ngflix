@@ -1,35 +1,26 @@
 import { Movie } from '@/app/models/types/movie.type';
 import { MovieResponse } from '@/app/models/types/movies-response.type';
 import { MoviesService } from '@/app/services/movies.service';
-import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { LucideAngularModule, ArrowRight, Heart } from 'lucide-angular';
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
+import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 
 @Component({
-  selector: 'app-recommended-movies',
-  imports: [
-    CommonModule,
-    RouterModule,
-    LucideAngularModule,
-    MovieCard,
-    SectionTitle,
-  ],
-  templateUrl: './recommended-movies.html',
-  styleUrl: './recommended-movies.css',
+  selector: 'app-trending-movies',
+  imports: [MovieCard, LucideAngularModule, SectionTitle],
+  templateUrl: './trending-movies.html',
+  styleUrl: './trending-movies.css',
 })
-export class RecommendedMovies {
+export class TrendingMovies {
   private moviesServices = inject(MoviesService);
 
   // Icons
   readonly ArrowRight = ArrowRight;
-  readonly Heart = Heart;
 
   isLoading = signal<boolean>(false);
   errorState = signal<string | null>(null);
-  recommendedMovies = signal<Movie[] | []>([]);
+  trendingMovies = signal<Movie[] | []>([]);
 
   constructor() {
     effect(() => {
@@ -38,16 +29,12 @@ export class RecommendedMovies {
       this.errorState.set(null);
 
       // GET Recommended Movies
-      this.moviesServices.getRecommendedMovies().subscribe({
+      this.moviesServices.getTrendingMovies().subscribe({
         next: (data: MovieResponse) => {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.recommendedMovies.set(
-              data.results
-                .slice(0, 4)
-                .sort((a, b) => b.popularity - a.popularity)
-            );
+            this.trendingMovies.set(data.results.splice(0, 15));
           }
         },
         error: (err) => {

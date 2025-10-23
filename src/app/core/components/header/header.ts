@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
 import { DesktopSearchbar } from '../desktop-searchbar/desktop-searchbar';
+import { Container } from '../../layout/container/container';
 
 @Component({
   selector: 'app-header',

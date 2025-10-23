@@ -1,5 +1,5 @@
 <li
-  class="relative rounded-lg p-2 bg-neutral-700 min-w-[140px] group overflow-hidden"
+  class="relative rounded-lg p-2 bg-neutral-700 aspect-[2/3] w-[140px] lg:w-[180px] max-w-[180px] group shrink-0 overflow-hidden"
 >
   <figure class="rounded-lg overflow-hidden">
     <img
@@ -33,7 +33,7 @@
       </svg>
 
       <small class="flex items-center gap-0.5"
-        >{{ movie().vote_average | number:'1.1-1' }}
+        >{{ movie().vote_average || 0 | number:'1.1-1' }}
         <span class="text-neutral-400 font-medium">/10</span></small
       >
     </span>
@@ -65,9 +65,16 @@
   <div
     class="absolute flex flex-col items-center justify-center backdrop-blur-lg left-2 right-2 bottom-2 overflow-hidden py-1.5 rounded-b-lg"
   >
-    <h3 class="font-medium font-primary! line-clamp-1 text-center">
-      {{ movie().title }}
+    <h3 class="font-medium xl:text-lg font-primary! line-clamp-1 text-center">
+      {{ movie().title || "Unknown"}}
     </h3>
-    <p class="text-sm">Animation</p>
+
+    <ul class="flex items-center gap-1">
+      @for (genre of movie().genre_ids.slice(0, 1); track genre) {
+      <li class="text-neutral-300 line-clamp-1">
+        {{moviesGenres[genre] || "Unknown"}}
+      </li>
+      }
+    </ul>
   </div>
 </li>

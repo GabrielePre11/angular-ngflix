@@ -13,10 +13,24 @@ export class MoviesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // Recommended Movies API
+  // Hero Banner
+  getHeroBanner(): Observable<MovieResponse> {
+    return this.httpClient.get<MovieResponse>(
+      `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+    );
+  }
+
+  // Recommended Movies
   getRecommendedMovies(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
-      `${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+      `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+    );
+  }
+
+  // Trending Now
+  getTrendingMovies(): Observable<MovieResponse> {
+    return this.httpClient.get<MovieResponse>(
+      `${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
     );
   }
 }

@@ -1,7 +1,7 @@
-<section aria-label="Recommended Movies" class="mt-5">
+<section aria-label="Recommended Movies" class="my-5">
   <div class="flex items-center justify-between gap-2.5">
     <!-- Title -->
-    <app-section-title title="Recommended For You" />
+    <app-section-title title="Trending Movies" />
 
     <button class="inline-flex items-center text-white sm:text-lg gap-2 group">
       View All
@@ -19,10 +19,10 @@
 
   <!-- Movies -->
   <ul
-    class="flex items-center gap-5 w-full overflow-x-scroll lg:overflow-auto scroll-smooth snap-x snap-mandatory my-5 scrollbar-hidden"
+    class="flex w-full items-center mt-5 gap-3 overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hidden"
   >
     <!-- Movie Card -->
-    @for (movie of recommendedMovies(); track movie.id) {
+    @for (movie of trendingMovies(); track movie.id) {
     <app-movie-card [movie]="movie" />
     }
   </ul>
