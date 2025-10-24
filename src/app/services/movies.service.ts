@@ -16,21 +16,21 @@ export class MoviesService {
   // Hero Banner
   getHeroBanner(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
-      `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+      `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}`
     );
   }
 
   // Recommended Movies
   getRecommendedMovies(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
-      `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+      `${this.baseUrl}/movie/popular?api_key=${this.apiKey}`
     );
   }
 
   // Trending Now
   getTrendingMovies(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
-      `${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}&language=it-IT&page=1&region=IT`
+      `${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}`
     );
   }
 }

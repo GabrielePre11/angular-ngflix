@@ -2,28 +2,28 @@
 
 @theme {
   /* Primary Colors */
-  --primary-10: #faf1cf;
-  --primary-20: #f5e49f;
-  --primary-30: #f0d66f;
-  --primary-40: #ebc93f;
-  --primary-50: #e7bc0f;
-  --primary-60: #b8960c;
-  --primary-70: #8a7009;
-  --primary-80: #5c4b05;
-  --primary-90: #2e2502;
+  --color-primary-10: #faf1cf;
+  --color-primary-20: #f5e49f;
+  --color-primary-30: #f0d66f;
+  --color-primary-40: #ebc93f;
+  --color-primary-50: #e7bc0f;
+  --color-primary-60: #b8960c;
+  --color-rimary-70: #8a7009;
+  --color-primary-80: #5c4b05;
+  --color-primary-90: #2e2502;
 
   /* Neutral Colors */
   --white: #ffffff;
-  --neutral-10: #f2f2f2;
-  --neutral-20: #cccccc;
-  --neutral-30: #b2b2b2;
-  --neutral-40: #999999;
-  --neutral-50: #808080;
-  --neutral-60: #666666;
-  --neutral-70: #4c4c4c;
-  --neutral-80: #333333;
-  --neutral-90: #1a1a1a;
-  --black: #000000;
+  --color-dark-10: #f2f2f2;
+  --color-dark-20: #cccccc;
+  --color-dark-30: #b2b2b2;
+  --color-dark-40: #999999;
+  --color-dark-50: #808080;
+  --color-dark-60: #666666;
+  --color-dark-70: #4c4c4c;
+  --color-dark-80: #333333;
+  --color-dark-90: #1a1a1a;
+  --color-dark-100: #000000;
 
   /* Semantic Colors */
   --success: #27c237;
@@ -38,7 +38,7 @@
 
 @layer base {
   body {
-    @apply font-primary bg-neutral-900 text-neutral-100 overflow-x-hidden antialiased;
+    @apply font-primary bg-dark-90 text-neutral-100 overflow-x-hidden antialiased;
   }
 
   html {
@@ -75,11 +75,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-[##e7bc0f];
+    @apply bg-dark-80;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-900;
+    @apply bg-primary-50 focus-within:bg-primary-60;
   }
 }
 

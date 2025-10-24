@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HeroSection } from '../hero-section/hero-section';
-import { TrendingMovies } from '../trending-movies/trending-movies';
+import { TrendingMovies } from './components/trending-movies/trending-movies';
+import { HeroSection } from './components/hero-section/hero-section';
 
 @Component({
   selector: 'app-home',

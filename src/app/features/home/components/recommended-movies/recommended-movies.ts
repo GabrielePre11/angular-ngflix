@@ -1,26 +1,51 @@
 import { Movie } from '@/app/models/types/movie.type';
 import { MovieResponse } from '@/app/models/types/movies-response.type';
 import { MoviesService } from '@/app/services/movies.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { Component, effect, inject, signal } from '@angular/core';
+
+import {
+  LucideAngularModule,
+  ArrowRight,
+  Heart,
+  ArrowLeft,
+  ArrowRightIcon,
+} from 'lucide-angular';
+
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
-import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 
 @Component({
-  selector: 'app-trending-movies',
-  imports: [MovieCard, LucideAngularModule, SectionTitle],
-  templateUrl: './trending-movies.html',
-  styleUrl: './trending-movies.css',
+  selector: 'app-recommended-movies',
+  imports: [
+    CommonModule,
+    RouterModule,
+    LucideAngularModule,
+    MovieCard,
+    SectionTitle,
+  ],
+  templateUrl: './recommended-movies.html',
+  styleUrl: './recommended-movies.css',
 })
-export class TrendingMovies {
+export class RecommendedMovies {
+  //============= INJECTION ============//
   private moviesServices = inject(MoviesService);
 
-  // Icons
-  readonly ArrowRight = ArrowRight;
+  protected title =
+    window.innerWidth < 350 ? 'Recommended' : 'Recommended For You';
 
+  //============= ICONS ============//
+  readonly ArrowRight = ArrowRight;
+  readonly Heart = Heart;
+  readonly ArrowLeft = ArrowLeft;
+  readonly ArrowRightIcon = ArrowRightIcon;
+
+  //============= SIGNALS / STATE ============//
   isLoading = signal<boolean>(false);
   errorState = signal<string | null>(null);
-  trendingMovies = signal<Movie[] | []>([]);
+  recommendedMovies = signal<Movie[] | []>([]);
 
   constructor() {
     effect(() => {
@@ -29,12 +54,16 @@ export class TrendingMovies {
       this.errorState.set(null);
 
       // GET Recommended Movies
-      this.moviesServices.getTrendingMovies().subscribe({
+      this.moviesServices.getRecommendedMovies().subscribe({
         next: (data: MovieResponse) => {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.trendingMovies.set(data.results.splice(0, 15));
+            this.recommendedMovies.set(
+              data.results
+                .slice(0, 4)
+                .sort((a, b) => b.popularity - a.popularity)
+            );
           }
         },
         error: (err) => {

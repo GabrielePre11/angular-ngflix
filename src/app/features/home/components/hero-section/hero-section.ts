@@ -4,11 +4,11 @@ import { MoviesService } from '@/app/services/movies.service';
 import { Movie } from '@/app/models/types/movie.type';
 import { MovieResponse } from '@/app/models/types/movies-response.type';
 import { MOVIES_GENRES } from '@/app/models/constants/movies-genres';
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-hero-section',
-  imports: [RecommendedMovies, DecimalPipe],
+  imports: [RecommendedMovies, DecimalPipe, DatePipe],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.css',
 })
@@ -21,6 +21,7 @@ export class HeroSection {
 
   // TMDB Poster Path
   posterPath: string = 'https://image.tmdb.org/t/p/w500';
+
   moviesGenres = MOVIES_GENRES;
 
   constructor() {

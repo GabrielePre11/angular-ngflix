@@ -1,0 +1,103 @@
+<!-- TO BE REFACTORED -->
+
+<section
+  aria-label="Hero Section"
+  class="grid items-start grid-cols-1 xl:grid-cols-[1fr_auto] xl:gap-6 mt-3"
+>
+  <!-- Main Banner -->
+  <div>
+    <figure
+      class="hidden sm:block relative sm:h-[300px] md:h-[350px] lg:h-[380px] rounded-lg overflow-hidden"
+    >
+      <img
+        [src]="posterPath + heroMovie()?.backdrop_path"
+        [alt]="heroMovie()?.title + ' Banner' || 'Unknown'"
+        class="size-full object-cover object-center"
+        priority
+        quality="100"
+      />
+
+      <div
+        class="absolute flex flex-col gap-3 left-5 bottom-5 backdrop-blur-lg rounded-lg p-5 bg-gradient-to-b from-neutral-900/50 via-neutral-900/50 to-neutral-900/0 drop-shadow-2xl drop-shadow-neutral-900/50"
+      >
+        <!-- Title -->
+        <h1 class="font-primary text-3xl font-bold text-white">
+          {{ heroMovie()?.title || "Unknown" }}
+        </h1>
+
+        <!-- Categories & Ratings -->
+        <div class="flex items-center gap-3">
+          <small class="flex items-center gap-0.5 font-semibold text-[1rem]"
+            >{{ heroMovie()?.vote_average || 0 | number:'1.1-1' }}
+            <span class="text-neutral-400 font-medium">/10</span></small
+          >
+          <ul class="flex items-center gap-1">
+            @for (genre of heroMovie()?.genre_ids; track genre) {
+            <li class="text-neutral-300 line-clamp-1">
+              {{moviesGenres[genre] || "Unknown"}}
+            </li>
+            }
+          </ul>
+        </div>
+
+        <!-- Description -->
+        <p class="max-w-sm line-clamp-5">
+          {{ heroMovie()?.overview || "Unknown" }}
+        </p>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+          <button
+            class="inline-flex items-center text-neutral-950 px-4 py-1 w-max bg-[#e7bc0f] uppercase rounded-lg font-medium text-lg transition-colors duration-300 ease-in-out hover:bg-[#d5a824]"
+            aria-label="Watch Now"
+          >
+            Watch Now
+          </button>
+        </div>
+      </div>
+    </figure>
+
+    <!-- Recommended Movies -->
+    <app-recommended-movies />
+  </div>
+
+  <!-- News -->
+  <div
+    class="relative hidden opacity-0 xl:opacity-100 xl:flex flex-col lg:h-full bg-neutral-900 p-3 rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-primary-50 before:-rotate-1 before:rounded-lg before:-z-10 transition-opacity duration-200 ease-in-out"
+  >
+    <!-- Image -->
+    <figure class="relative rounded-lg overflow-hidden">
+      <img
+        [src]="posterPath + heroMovie()?.backdrop_path"
+        [alt]="heroMovie()?.title + ' Poster' || 'Unknown'"
+        class="rounded-lg w-[200px] h-[150px] object-cover object-center transition-all duration-300 ease-in-out hover:brightness-110 hover:scale-105"
+        loading="lazy"
+      />
+    </figure>
+
+    <!-- Other Info -->
+    <div class="flex flex-col h-full mt-2 py-1 gap-2">
+      <!-- Title -->
+      <h4 class="font-primary text-lg font-bold text-primary-50">
+        {{ heroMovie()?.title || "Unknown" }}
+      </h4>
+
+      <!-- Description -->
+      <p class="text-sm text-dark-30">
+        {{ heroMovie()?.overview || "Unknown" }}
+      </p>
+
+      <!-- Date & Button -->
+      <div class="flex items-center justify-between mt-auto">
+        <small>{{ heroMovie()?.release_date | date: "MMM d, y"}}</small>
+
+        <button
+          class="inline-flex items-center text-neutral-950 px-2 py-0.5 w-max bg-primary-50 uppercase rounded-lg text-xs font-medium transition-colors duration-300 ease-in-out hover:bg-primary-60"
+          aria-label="Watch Now"
+        >
+          Watch Now
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

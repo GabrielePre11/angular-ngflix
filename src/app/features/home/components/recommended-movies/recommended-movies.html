@@ -1,7 +1,7 @@
 <section aria-label="Recommended Movies" class="mt-5">
   <div class="flex items-center justify-between gap-2.5">
     <!-- Title -->
-    <app-section-title title="Recommended For You" />
+    <app-section-title title="{{title}}" />
 
     <button class="inline-flex items-center text-white sm:text-lg gap-2 group">
       View All
@@ -19,7 +19,11 @@
 
   <!-- Movies -->
   <ul
-    class="flex items-center gap-5 w-full overflow-x-scroll lg:overflow-auto scroll-smooth snap-x snap-mandatory my-5 scrollbar-hidden"
+    class="flex items-center gap-3 w-full overflow-x-scroll lg:overflow-auto scroll-smooth snap-x snap-mandatory mt-5 scrollbar-hidden"
+    role="Recommended Movies Slider"
+    aria-label="Recommended Movies Slider"
+    aria-orientation="horizontal"
+    aria-live="polite"
   >
     <!-- Movie Card -->
     @for (movie of recommendedMovies(); track movie.id) {
