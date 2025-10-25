@@ -1,6 +1,3 @@
-import { Movie } from '@/app/models/types/movie.type';
-import { MovieResponse } from '@/app/models/types/response.type';
-import { MoviesService } from '@/app/services/movies.service';
 import {
   Component,
   effect,
@@ -9,40 +6,42 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { MovieCard } from '@/app/shared/movie-card/movie-card';
-import { LucideAngularModule, ArrowRight, ArrowLeft } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
+import { LucideAngularModule, ArrowLeft, ArrowRight } from 'lucide-angular';
+import { SeriesService } from '@/app/services/series.service';
+import { SeriesResponse } from '@/app/models/types/response.type';
+import { Series } from '@/app/models/types/series.type';
+import { SeriesCard } from '@/app/shared/series-card/series-card';
 
 @Component({
-  selector: 'app-trending-movies',
-  imports: [MovieCard, LucideAngularModule, SectionTitle],
-  templateUrl: './trending-movies.html',
-  styleUrl: './trending-movies.css',
+  selector: 'app-trending-series',
+  imports: [SectionTitle, LucideAngularModule, SeriesCard],
+  templateUrl: './trending-series.html',
+  styleUrl: './trending-series.css',
 })
-export class TrendingMovies {
-  private moviesServices = inject(MoviesService);
+export class TrendingSeries {
+  private moviesServices = inject(SeriesService);
 
-  // Icons
   readonly ArrowLeft = ArrowLeft;
   readonly ArrowRight = ArrowRight;
 
   isLoading = signal<boolean>(false);
   errorState = signal<string | null>(null);
-  trendingMovies = signal<Movie[] | []>([]);
+  trendingSeries = signal<Series[] | []>([]);
 
   //============= REF (VIEWCHILD) ============//
-  moviesSlider = viewChild<ElementRef<HTMLUListElement>>('moviesSlider');
+  seriesSlider = viewChild<ElementRef<HTMLUListElement>>('seriesSlider');
 
   //============= METHODS ============//
   scrollToLeft() {
-    this.moviesSlider()?.nativeElement.scrollBy({
+    this.seriesSlider()?.nativeElement.scrollBy({
       left: -300,
       behavior: 'smooth',
     });
   }
 
   scrollToRight() {
-    this.moviesSlider()?.nativeElement.scrollBy({
+    this.seriesSlider()?.nativeElement.scrollBy({
       left: 300,
       behavior: 'smooth',
     });
@@ -55,12 +54,12 @@ export class TrendingMovies {
       this.errorState.set(null);
 
       // GET Recommended Movies
-      this.moviesServices.getTrendingMovies().subscribe({
-        next: (data: MovieResponse) => {
+      this.moviesServices.getTrendingSeries().subscribe({
+        next: (data: SeriesResponse) => {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.trendingMovies.set(data.results.splice(0, 15));
+            this.trendingSeries.set(data.results.splice(0, 15));
           }
         },
         error: (err) => {

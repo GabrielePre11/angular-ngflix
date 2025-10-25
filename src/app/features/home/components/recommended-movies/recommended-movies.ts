@@ -1,5 +1,5 @@
 import { Movie } from '@/app/models/types/movie.type';
-import { MovieResponse } from '@/app/models/types/movies-response.type';
+import { MovieResponse } from '@/app/models/types/response.type';
 import { MoviesService } from '@/app/services/movies.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

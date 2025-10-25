@@ -2,7 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { RecommendedMovies } from '../recommended-movies/recommended-movies';
 import { MoviesService } from '@/app/services/movies.service';
 import { Movie } from '@/app/models/types/movie.type';
-import { MovieResponse } from '@/app/models/types/movies-response.type';
+import { MovieResponse } from '@/app/models/types/response.type';
 import { MOVIES_GENRES } from '@/app/models/constants/movies-genres';
 import { DatePipe, DecimalPipe } from '@angular/common';
 
