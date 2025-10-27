@@ -60,7 +60,7 @@ export class TrendingMovies {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.trendingMovies.set(data.results.splice(0, 15));
+            this.trendingMovies.set(data.results?.slice(0, 15) ?? []);
           }
         },
         error: (err) => {

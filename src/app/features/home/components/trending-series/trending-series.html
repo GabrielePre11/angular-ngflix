@@ -1,4 +1,4 @@
-<section aria-label="Trending Series Section" class="mt-20">
+<section aria-label="Trending Series Section" class="mt-16">
   <div class="flex items-center justify-between gap-2.5">
     <!-- Title -->
     <app-section-title title="Trending Series" />
@@ -58,7 +58,7 @@
     #seriesSlider
     class="flex w-full items-center mt-5 gap-3 overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hidden"
   >
-    <!-- Movie Card -->
+    <!-- Series Card -->
     @for (series of trendingSeries(); track series.id) {
     <app-series-card [series]="series" />
     }

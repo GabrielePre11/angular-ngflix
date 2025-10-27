@@ -18,4 +18,10 @@ export class SeriesService {
       `${this.baseUrl}/trending/tv/week?api_key=${this.apiKey}`
     );
   }
+
+  getGenreSeries(currentGenreId: number): Observable<SeriesResponse> {
+    return this.httpClient.get<SeriesResponse>(
+      `${this.baseUrl}/discover/tv?api_key=${this.apiKey}&with_genres=${currentGenreId}`
+    );
+  }
 }
