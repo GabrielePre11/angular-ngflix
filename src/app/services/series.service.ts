@@ -24,4 +24,10 @@ export class SeriesService {
       `${this.baseUrl}/discover/tv?api_key=${this.apiKey}&with_genres=${currentGenreId}`
     );
   }
+
+  getTopSeries(): Observable<SeriesResponse> {
+    return this.httpClient.get<SeriesResponse>(
+      `${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}`
+    );
+  }
 }

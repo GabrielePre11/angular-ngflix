@@ -72,7 +72,7 @@ export class Genres {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.genreSeries.set(data.results.slice(0, 25));
+            this.genreSeries.set(data.results.slice(0, 25) || []);
           }
         },
         error: (err) => {
