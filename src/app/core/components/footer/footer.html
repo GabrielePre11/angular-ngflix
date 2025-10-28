@@ -1,0 +1,66 @@
+<footer
+  class="flex flex-col gap-5 left-0 bottom-0 bg-transparent w-full mt-12 py-3.5 z-50"
+>
+  <!-- Main Footer -->
+  <div
+    class="flex flex-col sm:flex-row md:justify-between items-center gap-5 md:gap-10"
+  >
+    <!-- Logo & Description -->
+    <div class="flex flex-col gap-3">
+      <!-- Logo -->
+      <app-logo />
+
+      <!-- Description -->
+      <p class="sm:text-lg text-dark-40 max-w-xs">
+        NgFlix is a web application that allows users to search, filter and view
+        details for movies and TV shows. Powered by The Movie Database (TMDb)
+        API.
+      </p>
+    </div>
+
+    <!-- Footer Links -->
+    <ul class="grid grid-cols-2 sm:grid-cols-3 gap-5 mt-8 sm:mt-0">
+      @for (link of footerLinks; track link.title) {
+      <li class="flex flex-col gap-2">
+        <!-- Footter Link Title -->
+        <h3 class="text-lg xl:text-xl font-semibold text-dark-10">
+          {{ link.title }}
+        </h3>
+
+        <!-- Footer Links -->
+        <ul class="flex flex-col gap-2">
+          @for (footerLink of link.links; track footerLink.name) {
+          <li>
+            <a
+              [routerLink]="footerLink.path"
+              class="text-dark-40 transition-all hover:underline duration-300 ease-in-out md:text-lg"
+            >
+              {{ footerLink.name }}
+            </a>
+          </li>
+          }
+        </ul>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div
+    class="flex flex-col sm:flex-row sm:justify-between gap-2 border-t-2 border-dark-50 py-2.5 w-full items-center sm:items-baseline"
+  >
+    <p class="text-primary-50 xl:text-lg">
+      &copy; {{ currentYear }} NgFlix. All rights reserved.
+    </p>
+
+    <span
+      >Developed by
+      <a
+        href="https://github.com/GabrielePre11"
+        target="_blank"
+        class="hover:underline xl:text-lg text-primary-50"
+        >Gabriele Prestano</a
+      ></span
+    >
+  </div>
+</footer>
