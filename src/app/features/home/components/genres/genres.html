@@ -1,4 +1,4 @@
-<section aria-label="Genres Section" class="mt-12">
+<section aria-label="Genres Section" class="my-12">
   <div class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2.5">
       <!-- Title -->
@@ -8,7 +8,7 @@
       <div class="flex items-center gap-2.5">
         <!-- Scroll Left Arrow -->
         <button
-          class="grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+          class="arrow-btn"
           aria-label="Scroll to left"
           (click)="scrollToLeft()"
         >
@@ -22,7 +22,7 @@
 
         <!-- Scroll Right Arrow -->
         <button
-          class="grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+          class="arrow-btn"
           aria-label="Scroll to right"
           (click)="scrollToRight()"
         >
@@ -38,16 +38,19 @@
 
     <!-- Genres -->
     <ul
-      class="flex items-center gap-2.5 my-2 w-full overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hidden"
+      class="genres-slider scrollbar-hidden"
       role="slider"
+      aria-label="Genres Slider"
       aria-orientation="horizontal"
       #genresSlider
     >
       @for (genre of genres; track genre.id) {
       <li
-        class="inline-flex shrink-0 line-clamp-1 px-2 py-0.5 rounded-lg text-lg xl:text-xl cursor-pointer transition-colors duration-300 ease-in-out hover:bg-primary-60 hover:text-dark-90"
+        class="genre-item"
         [ngClass]="selectedGenre() === genre.id ? 'bg-primary-50 text-dark-90' : 'bg-transparent text-neutral-300'"
         (click)="selectedGenre.set(genre.id)"
+        role="option"
+        [attr.aria-selected]="selectedGenre() === genre.id"
       >
         {{ genre.name }}
       </li>
@@ -55,10 +58,7 @@
     </ul>
 
     <!-- Series -->
-    <ul
-      #seriesSlider
-      class="flex mt-2 w-full items-center gap-3 overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hidden"
-    >
+    <ul #seriesSlider class="slider mt-2 scrollbar-hidden">
       <!-- Series Card -->
       @for (series of genreSeries(); track series.id) {
       <app-series-card [series]="series" />

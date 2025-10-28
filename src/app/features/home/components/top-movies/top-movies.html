@@ -1,0 +1,63 @@
+<section aria-label="Recommended Movies" class="mt-12">
+  <div class="flex items-center justify-between gap-2.5">
+    <!-- Title -->
+    <app-section-title title="Top Movies" />
+
+    <div class="flex items-center gap-3">
+      <!-- View All Button -->
+      <button
+        class="inline-flex items-center text-white sm:text-lg gap-2 group"
+      >
+        View All
+
+        <!-- Icon -->
+        <lucide-angular
+          [img]="ArrowRight"
+          aria-label="View All"
+          aria-hidden="true"
+          class="stroke-[#e7bc0f] transition-transform duration-200 ease-in-out group-hover:translate-x-0.5"
+          size="22"
+        ></lucide-angular>
+      </button>
+
+      <!-- Arrows -->
+      <div class="hidden sm:flex items-center gap-2.5">
+        <!-- Scroll Left Arrow -->
+        <button
+          class="arrow-btn"
+          aria-label="Scroll to left"
+          (click)="scrollToLeft()"
+        >
+          <lucide-angular
+            [img]="ArrowLeft"
+            aria-label="Previous"
+            aria-hidden="true"
+            size="22"
+          ></lucide-angular>
+        </button>
+
+        <!-- Scroll Right Arrow -->
+        <button
+          class="arrow-btn"
+          aria-label="Scroll to right"
+          (click)="scrollToRight()"
+        >
+          <lucide-angular
+            [img]="ArrowRight"
+            aria-label="Next"
+            aria-hidden="true"
+            size="22"
+          ></lucide-angular>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movies -->
+  <ul #moviesSlider class="slider scrollbar-hidden mt-5">
+    <!-- Movie Card -->
+    @for (movie of topMovies(); track movie.id) {
+    <app-movie-card [movie]="movie" />
+    }
+  </ul>
+</section>
