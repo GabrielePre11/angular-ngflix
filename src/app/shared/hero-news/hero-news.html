@@ -1,0 +1,38 @@
+<article
+  class="relative hidden opacity-0 xl:opacity-100 xl:flex flex-col lg:h-full bg-neutral-900 p-3 rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-primary-50 before:-rotate-1 before:rounded-lg before:-z-10 transition-opacity duration-200 ease-in-out"
+>
+  <!--============== IMAGE ==============-->
+  <figure class="relative rounded-lg overflow-hidden">
+    <img
+      [src]="posterPath + newsMovie()?.backdrop_path"
+      [alt]="newsMovie()?.title + ' Poster' || 'Unknown'"
+      class="rounded-lg w-[200px] h-[150px] object-cover object-center transition-all duration-300 ease-in-out hover:brightness-110 hover:scale-105"
+      loading="lazy"
+    />
+  </figure>
+
+  <!--============== INFORMATIONS ==============-->
+  <div class="flex flex-col h-full mt-2 py-1 gap-2">
+    <!--============== TITLE ==============-->
+    <h4 class="font-primary text-lg font-bold text-primary-50">
+      {{ newsMovie()?.title || "Unknown" }}
+    </h4>
+
+    <!--============== DESCRIPTION ==============-->
+    <p class="text-sm text-dark-30">{{ newsMovie()?.overview || "Unknown" }}</p>
+
+    <!--============== DATE & ACTIONS ==============-->
+    <div class="flex items-center justify-between mt-auto">
+      <!-- Date -->
+      <small>{{ newsMovie()?.release_date | date: "MMM d, y"}}</small>
+
+      <!-- Watch Now Button -->
+      <button
+        class="inline-flex items-center text-neutral-950 px-2 py-0.5 w-max bg-primary-50 uppercase rounded-lg text-xs font-medium transition-colors duration-300 ease-in-out hover:bg-primary-60"
+        aria-label="Watch Now"
+      >
+        Watch Now
+      </button>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,54 @@
+<figure
+  class="hidden sm:block relative sm:h-[300px] md:h-[350px] lg:h-[380px] rounded-lg overflow-hidden"
+>
+  <!--============== IMAGE ==============-->
+  <img
+    [src]="posterPath + heroMovie()?.backdrop_path"
+    [alt]="heroMovie()?.title + ' Banner' || 'Unknown'"
+    class="size-full object-cover object-center"
+    priority
+    quality="100"
+  />
+
+  <div
+    class="absolute flex flex-col gap-3 left-5 bottom-0.5 md:bottom-5 backdrop-blur-lg rounded-lg p-5 bg-gradient-to-b from-neutral-900/50 via-neutral-900/50 to-neutral-900/0 drop-shadow-2xl drop-shadow-neutral-900/50"
+  >
+    <!--============== TITLE ==============-->
+    <h1 class="font-primary text-2xl md:text-3xl font-bold text-white">
+      {{ heroMovie()?.title || "Unknown" }}
+    </h1>
+
+    <!--============== CATEGORIES & RATINGS ==============-->
+    <div class="flex items-center gap-3">
+      <!-- Ratings -->
+      <small class="flex items-center gap-0.5 font-semibold text-[1rem]"
+        >{{ heroMovie()?.vote_average || 0 | number:'1.1-1' }}
+        <span class="text-neutral-400 font-medium">/10</span></small
+      >
+
+      <!-- Categories -->
+      <ul class="flex items-center gap-1">
+        @for (genre of heroMovie()?.genre_ids; track genre) {
+        <li class="text-neutral-300 line-clamp-1">
+          {{moviesGenres[genre] || "Unknown"}}
+        </li>
+        }
+      </ul>
+    </div>
+
+    <!--============== DESCRIPTION ==============-->
+    <p class="max-w-sm line-clamp-5">
+      {{ heroMovie()?.overview || "Unknown" }}
+    </p>
+
+    <!--============== ACTIONS ==============-->
+    <div class="flex items-center gap-3">
+      <button
+        class="inline-flex items-center text-neutral-950 px-4 py-1 w-max bg-primary-50 uppercase rounded-lg font-medium text-lg transition-colors duration-300 ease-in-out hover:bg-[#d5a824]"
+        aria-label="Watch Now"
+      >
+        Watch Now
+      </button>
+    </div>
+  </div>
+</figure>

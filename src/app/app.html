@@ -1,23 +1,22 @@
-<!-- App Layout -->
+<!--============== MAIN LAYOUT ==============-->
 
-<!-- TODO: Create a Layout Component in core/layout -->
-
+<!--============== CONTAINER ==============-->
 <app-container
   className="grid items-start md:gap-3 grid-cols-1 md:grid-cols-[auto_1fr]"
 >
-  <!-- Left Sidebar (hidden on small screens) -->
+  <!--============== LEFT SIDEBAR ==============-->
   <app-sidebar />
 
-  <!-- Header, Main Content & Footer -->
   <div class="overflow-hidden px-3">
+    <!--============== HEADER ==============-->
     <app-header />
 
-    <!-- Main Content -->
+    <!--============== MAIN CONTENT ==============-->
     <main>
       <router-outlet></router-outlet>
     </main>
 
-    <!-- Footer -->
+    <!--============== FOOTER ==============-->
     <app-footer />
   </div>
 </app-container>
