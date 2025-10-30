@@ -1,8 +1,5 @@
 <!--============== MAIN LAYOUT ==============-->
-<div
-  class="grid items-start md:gap-3 max-w-7xl mx-auto px-4"
-  [ngClass]="isSidebarOpen() ? 'grid-cols-1 md:grid-cols-[auto_1fr]' : 'grid-cols-1'"
->
+<app-container [isSidebarOpen]="isSidebarOpen()">
   <!--============== LEFT SIDEBAR ==============-->
   @if (isSidebarOpen()) {
   <app-sidebar
@@ -29,4 +26,4 @@
     <!--============== FOOTER ==============-->
     <app-footer />
   </div>
-</div>
+</app-container>

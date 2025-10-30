@@ -9,4 +9,5 @@ import { Component, input } from '@angular/core';
 })
 export class Container {
   className = input<string>('');
+  isSidebarOpen = input.required<boolean>();
 }
