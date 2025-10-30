@@ -19,7 +19,9 @@
     </h4>
 
     <!--============== DESCRIPTION ==============-->
-    <p class="text-sm text-dark-30">{{ newsMovie()?.overview || "Unknown" }}</p>
+    <p class="text-sm text-dark-30 text-justify tracking-tight">
+      {{ newsMovie()?.overview || "Unknown" }}
+    </p>
 
     <!--============== DATE & ACTIONS ==============-->
     <div class="flex items-center justify-between mt-auto">

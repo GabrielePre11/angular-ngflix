@@ -1,10 +1,10 @@
 <section aria-label="Recommended Movies" class="mt-12">
   <div class="flex items-center justify-between gap-2.5">
-    <!-- Title -->
+    <!--============== TITLE ==============-->
     <app-section-title title="Top Movies" />
 
     <div class="flex items-center gap-3">
-      <!-- View All Button -->
+      <!--============== VIEW ALL BUTTON ==============-->
       <button
         class="inline-flex items-center text-white sm:text-lg gap-2 group"
       >
@@ -20,7 +20,7 @@
         ></lucide-angular>
       </button>
 
-      <!-- Arrows -->
+      <!--============== ARROWS ==============-->
       <div class="hidden sm:flex items-center gap-2.5">
         <!-- Scroll Left Arrow -->
         <button
@@ -53,11 +53,25 @@
     </div>
   </div>
 
-  <!-- Movies -->
-  <ul #moviesSlider class="slider scrollbar-hidden mt-5">
-    <!-- Movie Card -->
-    @for (movie of topMovies(); track movie.id) {
+  <!--============== TOP MOVIES ==============-->
+  <ul
+    class="slider mt-5 scrollbar-hidden"
+    role="Top Movies Slider"
+    aria-label="Top Movies Slider"
+    aria-orientation="horizontal"
+    aria-live="polite"
+    #moviesSlider
+  >
+    <!--============== LOADING STATE ==============-->
+    @if (!errorState() && isLoading()) { @for (skeleton of limit; track $index)
+    {
+    <app-skeleton-card />
+    } }
+
+    <!--============== MOVIES SLIDER ==============-->
+    @if (!errorState() && !isLoading() && topMovies().length > 1) { @for (movie
+    of topMovies(); track movie.id) {
     <app-movie-card [movie]="movie" />
-    }
+    } }
   </ul>
 </section>

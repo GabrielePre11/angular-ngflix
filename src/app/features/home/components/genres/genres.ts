@@ -14,10 +14,17 @@ import { SeriesResponse } from '@/app/models/types/response.type';
 import { Series } from '@/app/models/types/series.type';
 import { CommonModule } from '@angular/common';
 import { SeriesCard } from '@/app/shared/series-card/series-card';
+import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
 
 @Component({
   selector: 'app-genres',
-  imports: [SectionTitle, LucideAngularModule, CommonModule, SeriesCard],
+  imports: [
+    SectionTitle,
+    LucideAngularModule,
+    CommonModule,
+    SeriesCard,
+    SkeletonCard,
+  ],
   templateUrl: './genres.html',
   styleUrl: './genres.css',
 })

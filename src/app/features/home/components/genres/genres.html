@@ -1,10 +1,10 @@
 <section aria-label="Genres Section" class="my-12">
   <div class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2.5">
-      <!-- Title -->
+      <!--============== TITLE ==============-->
       <app-section-title title="Genres" />
 
-      <!-- Arrows -->
+      <!--============== ARROWS ==============-->
       <div class="flex items-center gap-2.5">
         <!-- Scroll Left Arrow -->
         <button
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <!-- Genres -->
+    <!--============== GENRES ==============-->
     <ul
       class="genres-slider scrollbar-hidden"
       role="slider"
@@ -57,12 +57,26 @@
       }
     </ul>
 
-    <!-- Series -->
-    <ul #seriesSlider class="slider mt-2 scrollbar-hidden">
-      <!-- Series Card -->
-      @for (series of genreSeries(); track series.id) {
+    <!--============== TRENDING SERIES ==============-->
+    <ul
+      class="slider mt-5 scrollbar-hidden"
+      role="Trending Movies Slider"
+      aria-label="Trending Movies Slider"
+      aria-orientation="horizontal"
+      aria-live="polite"
+      #genresSlider
+    >
+      <!--============== LOADING STATE ==============-->
+      @if (!errorState() && isLoading()) { @for (skeleton of [1, 2, 3, 4]; track
+      $index) {
+      <app-skeleton-card />
+      } }
+
+      <!--============== MOVIES SLIDER ==============-->
+      @if (!errorState() && !isLoading() && genreSeries().length > 1) { @for
+      (series of genreSeries(); track series.id) {
       <app-series-card [series]="series" />
-      }
+      } }
     </ul>
   </div>
 </section>

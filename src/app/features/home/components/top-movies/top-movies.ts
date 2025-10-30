@@ -13,10 +13,17 @@ import {
 import { LucideAngularModule, ArrowLeft, ArrowRight } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
+import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
 
 @Component({
   selector: 'app-top-movies',
-  imports: [CommonModule, LucideAngularModule, SectionTitle, MovieCard],
+  imports: [
+    CommonModule,
+    LucideAngularModule,
+    SectionTitle,
+    MovieCard,
+    SkeletonCard,
+  ],
   templateUrl: './top-movies.html',
   styleUrl: './top-movies.css',
 })
@@ -30,6 +37,8 @@ export class TopMovies {
   isLoading = signal<boolean>(false);
   errorState = signal<string | null>(null);
   topMovies = signal<Movie[] | []>([]);
+
+  limit = Array.from({ length: 15 });
 
   //============= REF (VIEWCHILD) ============//
   moviesSlider = viewChild<ElementRef<HTMLUListElement>>('moviesSlider');
@@ -59,7 +68,7 @@ export class TopMovies {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.topMovies.set(data.results.slice(0, 15));
+            this.topMovies.set(data.results.slice(0, this.limit.length) || []);
           }
         },
         error: (err) => {

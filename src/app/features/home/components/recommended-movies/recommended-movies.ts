@@ -16,6 +16,7 @@ import {
 
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
+import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
 
 @Component({
   selector: 'app-recommended-movies',
@@ -25,6 +26,7 @@ import { SectionTitle } from '@/app/shared/section-title/section-title';
     LucideAngularModule,
     MovieCard,
     SectionTitle,
+    SkeletonCard,
   ],
   templateUrl: './recommended-movies.html',
   styleUrl: './recommended-movies.css',

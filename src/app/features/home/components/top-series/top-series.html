@@ -53,11 +53,25 @@
     </div>
   </div>
 
-  <!-- Top Series -->
-  <ul #seriesSlider class="slider scrollbar-hidden mt-5">
-    <!-- Movie Card -->
-    @for (series of topSeries(); track series.id) {
+  <!--============== TOP SERIES ==============-->
+  <ul
+    class="slider mt-5 scrollbar-hidden"
+    role="Top Series Slider"
+    aria-label="Trending Series Slider"
+    aria-orientation="horizontal"
+    aria-live="polite"
+    #seriesSlider
+  >
+    <!--============== LOADING STATE ==============-->
+    @if (!errorState() && isLoading()) { @for (skeleton of limit; track $index)
+    {
+    <app-skeleton-card />
+    } }
+
+    <!--============== MOVIES SLIDER ==============-->
+    @if (!errorState() && !isLoading() && topSeries().length > 1) { @for (series
+    of topSeries(); track series.id) {
     <app-series-card [series]="series" />
-    }
+    } }
   </ul>
 </section>

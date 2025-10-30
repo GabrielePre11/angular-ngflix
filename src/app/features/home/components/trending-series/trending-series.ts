@@ -12,10 +12,11 @@ import { SeriesService } from '@/app/services/series.service';
 import { SeriesResponse } from '@/app/models/types/response.type';
 import { Series } from '@/app/models/types/series.type';
 import { SeriesCard } from '@/app/shared/series-card/series-card';
+import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
 
 @Component({
   selector: 'app-trending-series',
-  imports: [SectionTitle, LucideAngularModule, SeriesCard],
+  imports: [SectionTitle, LucideAngularModule, SeriesCard, SkeletonCard],
   templateUrl: './trending-series.html',
   styleUrl: './trending-series.css',
 })
@@ -47,6 +48,8 @@ export class TrendingSeries {
     });
   }
 
+  limit = Array.from({ length: 15 });
+
   constructor() {
     effect(() => {
       // Error & Loading
@@ -59,7 +62,9 @@ export class TrendingSeries {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.trendingSeries.set(data.results.splice(0, 15));
+            this.trendingSeries.set(
+              data.results.splice(0, this.limit.length) || []
+            );
           }
         },
         error: (err) => {

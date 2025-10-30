@@ -12,10 +12,11 @@ import {
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
 import { LucideAngularModule, ArrowRight, ArrowLeft } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
+import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
 
 @Component({
   selector: 'app-trending-movies',
-  imports: [MovieCard, LucideAngularModule, SectionTitle],
+  imports: [MovieCard, LucideAngularModule, SectionTitle, SkeletonCard],
   templateUrl: './trending-movies.html',
   styleUrl: './trending-movies.css',
 })
@@ -29,6 +30,8 @@ export class TrendingMovies {
   isLoading = signal<boolean>(false);
   errorState = signal<string | null>(null);
   trendingMovies = signal<Movie[] | []>([]);
+
+  limit = Array.from({ length: 15 });
 
   //============= REF (VIEWCHILD) ============//
   moviesSlider = viewChild<ElementRef<HTMLUListElement>>('moviesSlider');
@@ -60,7 +63,9 @@ export class TrendingMovies {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.trendingMovies.set(data.results?.slice(0, 15) ?? []);
+            this.trendingMovies.set(
+              data.results?.slice(0, this.limit.length) ?? []
+            );
           }
         },
         error: (err) => {
