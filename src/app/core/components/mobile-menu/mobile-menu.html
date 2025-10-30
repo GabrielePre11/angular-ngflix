@@ -1,0 +1,55 @@
+<nav
+  class="fixed md:hidden top-0 left-0 w-full z-50 min-h-dvh bg-dark-90 transform transition-all duration-300 ease-in-out"
+  [ngClass]="isMobileMenuOpen() ? 'translate-x-0 opacity-100 scale-100' : '-translate-x-full opacity-0 scale-0 pointer-events-none'"
+  aria-label="Mobile Menu"
+  [attr.aria-expanded]="isMobileMenuOpen()"
+>
+  <!--============== HEADER ==============-->
+  <div class="flex items-center justify-between gap-3 py-5 px-6">
+    <!-- Logo -->
+    <app-logo />
+
+    <!-- Close Mobile Menu -->
+    <button
+      class="grid place-items-center p-2 rounded-lg border border-dark-60 transition-colors duration-300 hover:bg-dark-80"
+      aria-label="Close Mobile Menu"
+      (click)="onClose()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#e7bc0f"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-x-icon lucide-x transition-all duration-300 hover:rotate-45 ease-in-out"
+      >
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!--============== LINKS ==============-->
+  <ul role="navigation" class="flex flex-col gap-10 p-10 text-4xl mt-8">
+    @for (link of navList; track link.path) {
+    <li
+      class="transition-transform duration-300 ease-in-out hover:scale-105 w-max"
+      (click)="onClose()"
+    >
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        [ngClass]="link.path === pathName ? 'text-primary-50' : 'text-neutral-300'"
+        [attr.aria-current]="link.path === pathName ? 'page' : null"
+        class="cursor-pointer hover:text-primary-50 transition-colors duration-300 ease-in-out"
+        >{{link.name}}
+      </a>
+    </li>
+    }
+  </ul>
+</nav>

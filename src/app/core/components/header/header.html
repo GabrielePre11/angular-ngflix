@@ -2,14 +2,14 @@
   class="flex items-center top-0 left-0 w-full py-3.5 z-50 bg-transparent"
 >
   <div class="flex items-center justify-between w-full gap-5">
-    <!-- Logo -->
+    <!--============== LOGO ==============-->
     <app-logo class="md:hidden" />
 
-    <!-- Desktop Navigation -->
+    <!--============== DESKTOP NAVBAR ==============-->
     <app-navbar />
   </div>
 
-  <!-- Header Actions -->
+  <!--============== HEADER ACTIONS ==============-->
   <div class="flex items-center gap-2.5 md:gap-3">
     <!-- Desktop Searchbar -->
     <app-desktop-searchbar />
@@ -17,6 +17,7 @@
     <!-- Search Button -->
     <button
       class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+      aria-label="Toggle Searchbar"
     >
       <lucide-angular
         [img]="Search"
@@ -29,6 +30,8 @@
     <!-- Menu Button -->
     <button
       class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+      aria-label="Open Mobile Menu"
+      (click)="openMobileMenu()"
     >
       <lucide-angular
         [img]="Menu"
@@ -42,6 +45,7 @@
     <button
       class="grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
       routerLink="/login"
+      aria-label="Go to Login Page"
     >
       <lucide-angular
         [img]="LogIn"
@@ -52,4 +56,10 @@
       ></lucide-angular>
     </button>
   </div>
+
+  <!--============== MOBILE MENU COMPONENT ==============-->
+  <app-mobile-menu
+    [isMobileMenuOpen]="isMobileMenuOpen()"
+    (closeMobileMenu)="openMobileMenu()"
+  />
 </header>

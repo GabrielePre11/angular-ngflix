@@ -50,6 +50,8 @@ export class Genres {
   errorState = signal<string | null>(null);
   genreSeries = signal<Series[] | []>([]);
 
+  limit = Array.from({ length: 25 });
+
   //============= METHODS ============//
   scrollToLeft() {
     this.genresSlider()?.nativeElement.scrollBy({
@@ -79,7 +81,9 @@ export class Genres {
           this.isLoading.set(false);
 
           if (Array.isArray(data.results)) {
-            this.genreSeries.set(data.results.slice(0, 25) || []);
+            this.genreSeries.set(
+              data.results.slice(0, this.limit.length) || []
+            );
           }
         },
         error: (err) => {

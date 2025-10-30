@@ -67,7 +67,7 @@
       #genresSlider
     >
       <!--============== LOADING STATE ==============-->
-      @if (!errorState() && isLoading()) { @for (skeleton of [1, 2, 3, 4]; track
+      @if (!errorState() && isLoading()) { @for (skeleton of limit; track
       $index) {
       <app-skeleton-card />
       } }

@@ -7,16 +7,7 @@
 <app-trending-movies />
 
 <!--============= Peaky Blinders Banner =============-->
-<figure class="hidden sm:block relative mt-10">
-  <img
-    src="Peaky_Blinders_Banner.png"
-    alt="Peaky Blinders Banner"
-    width="500"
-    height="500"
-    loading="lazy"
-    class="object-cover mt-5"
-  />
-</figure>
+<app-banner [bannerImage]="'Peaky_Blinders_Banner.png'" />
 
 <!--============= Trending Series =============-->
 <app-trending-series />
@@ -25,16 +16,7 @@
 <app-genres />
 
 <!--============= Legend Banner =============-->
-<figure class="hidden sm:block relative mt-10">
-  <img
-    src="Banner_Legend.png"
-    alt="Legend Banner"
-    width="500"
-    height="500"
-    loading="lazy"
-    class="object-cover mt-5"
-  />
-</figure>
+<app-banner [bannerImage]="'Banner_Legend.png'" />
 
 <!--============= Top Movies =============-->
 <app-top-movies />

@@ -1,9 +1,10 @@
 <li
   class="relative rounded-lg p-2 bg-neutral-700 aspect-[2/3] w-[140px] lg:w-[180px] max-w-[180px] group shrink-0 overflow-hidden"
 >
+  <!--============== POSTER ==============-->
   <figure class="rounded-lg overflow-hidden">
     <img
-      [src]="posterPath + series().poster_path"
+      [src]="series().poster_path ? posterPath + series().poster_path : 'no-poster-available.jpg'"
       [alt]="series().name + ' Poster' || 'Unknown'"
       width="500"
       height="500"
@@ -11,10 +12,11 @@
       class="object-cover rounded-lg transition-all duration-300 ease-in-out group-hover:brightness-110 group-hover:scale-105 group-hover:rotate-3"
     />
 
-    <!-- Movie Rating -->
+    <!--============== SERIES RATING ==============-->
     <span
       class="absolute top-3 left-3 flex items-center gap-1.5 bg-neutral-800 rounded-lg px-1.5 py-0.5 text-lg"
     >
+      <!-- Star -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="18"
@@ -32,13 +34,14 @@
         />
       </svg>
 
+      <!-- Rating -->
       <small class="flex items-center gap-0.5"
         >{{ series().vote_average || 0 | number:'1.1-1' }}
         <span class="text-neutral-400 font-medium">/10</span></small
       >
     </span>
 
-    <!-- Wishlist Button -->
+    <!--============== WISHLIST BUTTON ==============-->
     <button
       class="absolute top-1 right-0.5 grid place-items-center bg-neutral-700 p-1.5 rounded-bl-lg rounded-br-lg z-30"
     >
@@ -61,14 +64,16 @@
     </button>
   </figure>
 
-  <!-- Movie Title & Category -->
+  <!--============== SERIES TITLE & CATEGORY ==============-->
   <div
     class="absolute flex flex-col items-center justify-center backdrop-blur-lg left-2 right-2 bottom-2 overflow-hidden py-1.5 rounded-b-lg"
   >
+    <!-- Title -->
     <h3 class="font-medium xl:text-lg font-primary! line-clamp-1 text-center">
       {{ series().name || "Unknown"}}
     </h3>
 
+    <!-- Category -->
     <ul class="flex items-center gap-1">
       @for (genre of series().genre_ids.slice(0, 1); track genre) {
       <li class="text-neutral-300 line-clamp-1">
