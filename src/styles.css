@@ -122,6 +122,10 @@
   @apply grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
 }
 
+.open-sidebar-btn {
+  @apply grid place-items-center p-1.5 rounded-lg border border-dark-60 transition-colors duration-300 hover:bg-dark-80;
+}
+
 .header-action-login {
   @apply grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
 }

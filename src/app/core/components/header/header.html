@@ -10,7 +10,7 @@
       <!--============== OPEN SIDEBAR ==============-->
       @if (!isSidebarOpen()) {
       <button
-        class="grid place-items-center p-1.5 rounded-lg border border-dark-60 transition-colors duration-300 hover:bg-dark-80"
+        class="open-sidebar-btn"
         aria-label="Open Sidebar"
         (click)="onSidebarOpen()"
       >
@@ -42,7 +42,11 @@
     <app-desktop-searchbar />
 
     <!-- Search Button -->
-    <button class="header-action" aria-label="Toggle Searchbar">
+    <button
+      class="header-action"
+      aria-label="Toggle Searchbar"
+      (click)="openMobileSearchbar()"
+    >
       <lucide-angular
         [img]="Search"
         aria-label="Search"
@@ -85,5 +89,11 @@
   <app-mobile-menu
     [isMobileMenuOpen]="isMobileMenuOpen()"
     (closeMobileMenu)="openMobileMenu()"
+  />
+
+  <!--============== MOBILE SEARCHBAR ==============-->
+  <app-mobile-searchbar
+    [isMobileSearchbarOpen]="isMobileSearchbarOpen()"
+    (closeMobileSearchbar)="openMobileSearchbar()"
   />
 </header>

@@ -1,0 +1,49 @@
+<div
+  class="fixed top-0 left-0 w-full grid place-items-center min-h-dvh p-10 bg-neutral-800/30 backdrop-blur-lg z-50 transition-transform duration-300 ease-in-out"
+  [ngClass]="isMobileSearchbarOpen() ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-full opacity-0 scale-0 pointer-events-none'"
+>
+  <!--============== CLOSE MOBILE SEARCHBAR ==============-->
+  <button
+    class="absolute top-5 right-5 grid place-items-center p-2 rounded-lg border border-dark-60 transition-colors duration-300 hover:bg-dark-80"
+    aria-label="Close Mobile Searchbar"
+    (click)="onClose()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#e7bc0f"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-x-icon lucide-x transition-all duration-300 hover:rotate-45 ease-in-out"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+
+  <!--============== MOBILE SEARCHBAR ==============-->
+  <form
+    role="searchbox"
+    class="flex bg-dark-90 border border-dark-50 rounded-lg items-center gap-2.5 p-5 md:p-8"
+  >
+    <div class="flex flex-col gap-5">
+      <input
+        type="search"
+        inputmode="latin"
+        placeholder="Search..."
+        class="w-full bg-dark-80 px-4 md:px-5 py-2.5 md:py-3.5 rounded-lg text-white outline-0 max-w-[500px]"
+      />
+
+      <!--============== SEARCH BUTTON ==============-->
+      <button
+        class="block px-4 py-2 text-lg font-medium uppercase bg-primary-50 text-dark-90 w-full rounded-lg transition-colors duration-300 ease-in-out hover:bg-primary-60"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>

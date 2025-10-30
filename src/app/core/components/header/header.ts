@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
 import { DesktopSearchbar } from '../desktop-searchbar/desktop-searchbar';
 import { MobileMenu } from '../mobile-menu/mobile-menu';
+import { MobileSearchbar } from '../mobile-searchbar/mobile-searchbar';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ import { MobileMenu } from '../mobile-menu/mobile-menu';
     Navbar,
     DesktopSearchbar,
     MobileMenu,
+    MobileSearchbar,
   ],
   templateUrl: './header.html',
   styleUrl: './header.css',
@@ -35,6 +37,7 @@ export class Header {
   // Open Mobile Menu
   openMobileMenu() {
     this.isMobileMenuOpen.update((prev) => !prev);
+    this.isMobileSearchbarOpen.set(false);
   }
 
   // Open Sidebar
@@ -42,9 +45,15 @@ export class Header {
     this.openSidebar.emit(true);
   }
 
+  // Open Mobile Searchbar
+  openMobileSearchbar() {
+    this.isMobileSearchbarOpen.update((prev) => !prev);
+    this.isMobileMenuOpen.set(false);
+  }
+
   constructor() {
     effect(() => {
-      if (this.isMobileMenuOpen()) {
+      if (this.isMobileMenuOpen() || this.isMobileSearchbarOpen()) {
         document.body.classList.add('overflow-hidden');
       } else {
         document.body.classList.remove('overflow-hidden');
