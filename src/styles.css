@@ -71,7 +71,7 @@
   }
 
   ::-webkit-scrollbar {
-    @apply w-2.5;
+    @apply w-2.5 pt-5;
   }
 
   ::-webkit-scrollbar-track {
