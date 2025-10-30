@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -32,8 +32,18 @@ export class Sidebar {
   readonly ShieldQuestionMark = ShieldQuestionMark;
   readonly Settings = Settings;
 
+  // Constants
   sideList = SIDE_LIST;
   sideInfos = SIDE_LIST_INFOS;
 
+  // Pathname
   pathName = window.location.pathname;
+
+  // Signals
+  isSidebarOpen = input.required<boolean>();
+  toggleSidebar = output<boolean>();
+
+  onClose() {
+    this.toggleSidebar.emit(false);
+  }
 }

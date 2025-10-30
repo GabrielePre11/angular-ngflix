@@ -5,8 +5,35 @@
     <!--============== LOGO ==============-->
     <app-logo class="md:hidden" />
 
-    <!--============== DESKTOP NAVBAR ==============-->
-    <app-navbar />
+    <!--============== OPEN SIDEBAR BUTTON & DESKTOP NAVBAR ==============-->
+    <div class="flex items-center gap-5">
+      <!--============== OPEN SIDEBAR ==============-->
+      @if (!isSidebarOpen()) {
+      <button
+        class="grid place-items-center p-1.5 rounded-lg border border-dark-60 transition-colors duration-300 hover:bg-dark-80"
+        aria-label="Open Sidebar"
+        (click)="onSidebarOpen()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#e7bc0f"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left-icon lucide-chevron-left transition-transform duration-300 ease-in-out hover:-translate-x-1"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+      }
+
+      <!--============== DESKTOP NAVBAR ==============-->
+      <app-navbar />
+    </div>
   </div>
 
   <!--============== HEADER ACTIONS ==============-->
@@ -15,10 +42,7 @@
     <app-desktop-searchbar />
 
     <!-- Search Button -->
-    <button
-      class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
-      aria-label="Toggle Searchbar"
-    >
+    <button class="header-action" aria-label="Toggle Searchbar">
       <lucide-angular
         [img]="Search"
         aria-label="Search"
@@ -29,7 +53,7 @@
 
     <!-- Menu Button -->
     <button
-      class="grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+      class="header-action"
       aria-label="Open Mobile Menu"
       (click)="openMobileMenu()"
     >
@@ -43,7 +67,7 @@
 
     <!-- Login Button -->
     <button
-      class="grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800"
+      class="header-action-login"
       routerLink="/login"
       aria-label="Go to Login Page"
     >

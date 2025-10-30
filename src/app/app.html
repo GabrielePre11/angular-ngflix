@@ -1,15 +1,25 @@
 <!--============== MAIN LAYOUT ==============-->
-
-<!--============== CONTAINER ==============-->
-<app-container
-  className="grid items-start md:gap-3 grid-cols-1 md:grid-cols-[auto_1fr]"
+<div
+  class="grid items-start md:gap-3 max-w-7xl mx-auto px-4"
+  [ngClass]="isSidebarOpen() ? 'grid-cols-1 md:grid-cols-[auto_1fr]' : 'grid-cols-1'"
 >
   <!--============== LEFT SIDEBAR ==============-->
-  <app-sidebar />
+  @if (isSidebarOpen()) {
+  <app-sidebar
+    [isSidebarOpen]="isSidebarOpen()"
+    (toggleSidebar)="closeSidebar()"
+  />
+  }
 
-  <div class="overflow-hidden px-3">
+  <div
+    class="overflow-hidden px-3"
+    [ngClass]="!isSidebarOpen() ? 'max-w-5xl mx-auto' : ''"
+  >
     <!--============== HEADER ==============-->
-    <app-header />
+    <app-header
+      [isSidebarOpen]="isSidebarOpen()"
+      (openSidebar)="openSidebar()"
+    />
 
     <!--============== MAIN CONTENT ==============-->
     <main>
@@ -19,4 +29,4 @@
     <!--============== FOOTER ==============-->
     <app-footer />
   </div>
-</app-container>
+</div>

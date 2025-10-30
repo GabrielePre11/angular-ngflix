@@ -94,6 +94,10 @@
 }
 
 /* before:content-[\'\'] is in the template 'cause content-[''] is a dynamic value. */
+.sidebar {
+  @apply hidden md:flex top-0 left-0 flex-col w-[200px] max-w-[200px] p-5 border-l border-r border-b rounded-b-lg border-neutral-400 overflow-x-clip;
+}
+
 .active-item {
   @apply relative before:w-3.5 before:h-8 before:bg-amber-300 before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:rounded-sm;
 }
@@ -111,5 +115,13 @@
 }
 
 .arrow-btn {
+  @apply grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
+}
+
+.header-action {
+  @apply grid sm:hidden place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
+}
+
+.header-action-login {
   @apply grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
 }

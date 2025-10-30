@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { Logo } from '@/app/shared/logo/logo';
 import { LucideAngularModule, Menu, Search, LogIn } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
@@ -29,9 +29,17 @@ export class Header {
   isMobileMenuOpen = signal<boolean>(false);
   isMobileSearchbarOpen = signal<boolean>(false);
 
+  isSidebarOpen = input.required<boolean>();
+  openSidebar = output<boolean>();
+
   // Open Mobile Menu
   openMobileMenu() {
     this.isMobileMenuOpen.update((prev) => !prev);
+  }
+
+  // Open Sidebar
+  onSidebarOpen() {
+    this.openSidebar.emit(true);
   }
 
   constructor() {
