@@ -1,0 +1,133 @@
+<article class="flex flex-col gap-5 mt-3 sm:mt-1.5">
+  <!--============== POSTER, OVERLAY & MAIN DETAILS ==============-->
+  <div
+    class="relative grid grid-cols-1 items-center gap-10 sm:grid-cols-2 p-5 lg:p-8 border border-dark-30 rounded-lg overflow-hidden"
+  >
+    <!--============== OVERLAY ==============-->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[20px] scale-110 brightness-[0.4]"
+      [ngStyle]="{
+      'background-image': movie()?.backdrop_path
+        ? 'url(https://image.tmdb.org/t/p/w500' + movie()?.backdrop_path + ')'
+        : 'none'
+    }"
+    ></div>
+
+    <!--============== POSTER ==============-->
+    <figure
+      class="relative place-self-center overflow-hidden group rounded-lg drop-shadow-lg drop-shadow-primary-50 transition-all duration-300 ease-in-out hover:drop-shadow-xl hover:drop-shadow-primary-60"
+    >
+      <img
+        [src]="movie()?.poster_path ? posterPath + movie()?.poster_path : 'no-poster-available.jpg'"
+        [alt]="movie()?.title + 's poster'"
+        width="500"
+        height="500"
+        class="object-cover max-w-[300px] transition-all duration-300 ease-in-out group-hover:brightness-110 rounded-lg"
+      />
+    </figure>
+
+    <!--============== MAIN DETAILS ==============-->
+    <div class="relative flex flex-col gap-5">
+      <!-- Title -->
+      <h2
+        class="font-secondary text-3xl md:text-4xl xl:text-6xl font-bold line-clamp-2 text-dark-10"
+      >
+        {{ movie()?.title || "Unknown" }}
+      </h2>
+
+      <!-- Categories -->
+      <ul class="flex items-center gap-1.5 md:gap-2 py-2">
+        @for (genre of movie()?.genres?.slice(0, 2); track genre) {
+        <li
+          class="inline-flex px-3 py-0.5 bg-dark-90 border border-neutral-400 text-neutral-300 line-clamp-1 truncate rounded-lg"
+        >
+          {{genre.name || "Unknown"}}
+        </li>
+        }
+      </ul>
+
+      <!-- Description -->
+      <p class="text-dark-40 lg:text-lg">
+        {{ movie()?.overview || "Unknown" }}
+      </p>
+    </div>
+  </div>
+
+  <!--============== INFORMATIONS ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">Informations</h3>
+
+    <ul
+      class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-5 md:gap-8 lg:gap-10 xl:gap-12"
+    >
+      <!-- Left List -->
+      <ul class="flex flex-col gap-3 w-full">
+        @for (info of movieInformationsList.slice(0, 4); track info.title) {
+        <li
+          class="flex items-center justify-between gap-5 py-3.5 border-t border-b border-neutral-400"
+        >
+          <!-- Icon & Title -->
+          <div class="flex items-center gap-2">
+            <lucide-icon [name]="info.icon" color="#e7bc0f" />
+
+            <span class="font-primary text-dark-10">
+              {{ info.title || "Unknown" }}
+            </span>
+          </div>
+
+          <!-- Value -->
+          <span class="font-primary text-dark-30 line-clamp-1">
+            {{ info.getValue(movie() || null) || "Unknown" }}
+          </span>
+        </li>
+        }
+      </ul>
+
+      <!-- Right List -->
+      <ul class="flex flex-col gap-3 w-full">
+        @for (info of movieInformationsList.slice(4, 8); track info.title) {
+        <li
+          class="flex items-center justify-between gap-5 py-3.5 border-t border-b border-neutral-400"
+        >
+          <!-- Icon & Title -->
+          <div class="flex items-center gap-2">
+            <lucide-icon [name]="info.icon" color="#e7bc0f" />
+
+            <span class="font-primary text-dark-10">
+              {{ info.title || "Unknown" }}
+            </span>
+          </div>
+
+          <!-- Value -->
+          <span class="font-primary text-dark-30 line-clamp-1">
+            {{ info.getValue(movie() || null) || "Unknown" }}
+          </span>
+        </li>
+        }
+      </ul>
+    </ul>
+  </div>
+
+  <!--============== SIMILAR MOVIES ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">
+      You may also like
+    </h3>
+
+    <!-- Similar Movies -->
+    <ul
+      class="grid place-items-center grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-8"
+    >
+      @if (!errorState() && isLoading()) { @for (skeleton of limit; track
+      $index) {
+      <app-skeleton-card />
+      } }
+
+      <!--============== MOVIES SLIDER ==============-->
+      @if (!errorState() && !isLoading() && similarMovies().length > 1) { @for
+      (movie of similarMovies().slice(0, limit.length); track movie.id) {
+      <app-movie-card [movie]="movie" />
+      } }
+    </ul>
+  </div>
+</article>

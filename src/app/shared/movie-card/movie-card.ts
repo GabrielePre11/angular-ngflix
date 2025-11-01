@@ -2,10 +2,11 @@ import { MOVIES_GENRES } from '@/app/models/constants/movies-genres';
 import { Movie } from '@/app/models/types/movie.type';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [CommonModule, DecimalPipe],
+  imports: [CommonModule, DecimalPipe, RouterLink],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
