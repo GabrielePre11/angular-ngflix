@@ -136,6 +136,7 @@
   </div>
 
   <!--============== LAST EPISODE & NEXT EPISODE ON AIR ==============-->
+  @if (series()?.last_episode_to_air && series()?.next_episode_to_air) {
   <div class="flex flex-col gap-5 mt-3">
     <h3 class="font-primary text-dark-10 font-medium text-xl">Episodes</h3>
 
@@ -245,6 +246,7 @@
       </li>
     </ul>
   </div>
+  }
 
   <!--============== SIMILAR SERIES ==============-->
   <div class="flex flex-col gap-5 mt-3">
