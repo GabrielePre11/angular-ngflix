@@ -1,1 +1,271 @@
-<p>series-detail-page works!</p>
+<article class="flex flex-col gap-5 mt-3 sm:mt-1.5" aria-label="Series Detail">
+  <!--============== POSTER, OVERLAY & MAIN DETAILS ==============-->
+  <div
+    class="relative grid grid-cols-1 items-center gap-10 sm:grid-cols-2 p-5 lg:p-8 border border-dark-30 rounded-lg overflow-hidden"
+  >
+    <!--============== OVERLAY ==============-->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[20px] scale-110 brightness-[0.4]"
+      [ngStyle]="{
+      'background-image': series()?.backdrop_path
+        ? 'url(https://image.tmdb.org/t/p/w500' + series()?.backdrop_path + ')'
+        : 'none'
+    }"
+    ></div>
+
+    <!--============== POSTER ==============-->
+    <figure
+      class="relative place-self-center overflow-hidden group rounded-lg drop-shadow-lg drop-shadow-primary-50 transition-all duration-300 ease-in-out hover:drop-shadow-xl hover:drop-shadow-primary-60"
+    >
+      <img
+        [src]="series()?.poster_path ? posterPath + series()?.poster_path : 'no-poster-available.jpg'"
+        [alt]="series()?.name"
+        width="500"
+        height="500"
+        class="object-cover max-w-[300px] transition-all duration-300 ease-in-out group-hover:brightness-110 rounded-lg"
+      />
+    </figure>
+
+    <!--============== MAIN DETAILS ==============-->
+    <div class="relative flex flex-col gap-5">
+      <!-- Title -->
+      <h2
+        class="font-secondary text-3xl md:text-4xl xl:text-6xl font-bold line-clamp-2 text-dark-10"
+      >
+        {{ series()?.name || "Unknown" }}
+      </h2>
+
+      <!-- Categories -->
+      <ul class="flex items-center gap-1.5 md:gap-2 py-2">
+        @for (genre of series()?.genres?.slice(0, 2); track genre) {
+        <li
+          class="inline-flex px-3 py-0.5 bg-dark-90 border border-neutral-400 text-neutral-300 line-clamp-1 truncate rounded-lg"
+        >
+          {{genre.name || "Unknown"}}
+        </li>
+        }
+      </ul>
+
+      <!-- Description -->
+      <p class="text-dark-40 lg:text-lg">
+        {{ series()?.overview || "Unknown" }}
+      </p>
+    </div>
+  </div>
+
+  <!--============== INFORMATIONS ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">Informations</h3>
+
+    <ul
+      class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-5 md:gap-8 lg:gap-10 xl:gap-12"
+    >
+      <!-- Left List -->
+      <ul class="flex flex-col gap-3 w-full">
+        @for (info of seriesInformationsList.slice(0, 4); track info.title) {
+        <li
+          class="flex items-center justify-between gap-5 py-3.5 border-t border-b border-neutral-400"
+        >
+          <!-- Icon & Title -->
+          <div class="flex items-center gap-2">
+            <lucide-icon [name]="info.icon" color="#e7bc0f" />
+
+            <span class="font-primary text-dark-10">
+              {{ info.title || "Unknown" }}
+            </span>
+          </div>
+
+          <!-- Value -->
+          <span class="font-primary text-dark-30 line-clamp-1">
+            {{ info.getValue(series() || null) || "Unknown" }}
+          </span>
+        </li>
+        }
+      </ul>
+
+      <!-- Right List -->
+      <ul class="flex flex-col gap-3 w-full">
+        @for (info of seriesInformationsList.slice(4, 8); track info.title) {
+        <li
+          class="flex items-center justify-between gap-5 py-3.5 border-t border-b border-neutral-400"
+        >
+          <!-- Icon & Title -->
+          <div class="flex items-center gap-2">
+            <lucide-icon [name]="info.icon" color="#e7bc0f" />
+
+            <span class="font-primary text-dark-10">
+              {{ info.title || "Unknown" }}
+            </span>
+          </div>
+
+          <!-- Value -->
+          <span class="font-primary text-dark-30 line-clamp-1">
+            {{ info.getValue(series() || null) || "Unknown" }}
+          </span>
+        </li>
+        }
+      </ul>
+    </ul>
+  </div>
+
+  <!--============== CREATED BY (People) ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">Created By</h3>
+
+    <ul class="flex items-center gap-5 flex-wrap">
+      @for (creator of series()?.created_by; track creator.id) {
+      <li class="flex flex-col gap-1.5 text-center">
+        <!-- Profile Pic -->
+        <img
+          [src]="creator.profile_path ? posterPath + creator.profile_path : 'no-poster-available.jpg'"
+          [alt]="creator.name + ' Profile'"
+          width="500"
+          height="500"
+          class="object-cover size-20 lg:size-24 rounded-full border-4 border-primary-50 p-1"
+        />
+
+        <!-- Name -->
+        <small
+          class="font-primary text-dark-10 line-clamp-1 text-sm md:text-lg"
+        >
+          {{ creator.name || "Unknown" }}
+        </small>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <!--============== LAST EPISODE & NEXT EPISODE ON AIR ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">Episodes</h3>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8 lg:gap-10">
+      <!--============== LAST EPISODE ON AIR ==============-->
+      <li class="flex flex-col gap-2.5">
+        <h4 class="font-primary text-lg text-primary-50">
+          Last Episode On Air
+        </h4>
+
+        <!-- Poster -->
+        <figure class="relative overflow-hidden">
+          <img
+            [src]="series()?.last_episode_to_air?.still_path ? posterPath + series()?.last_episode_to_air?.still_path : 'no-poster-available.jpg'"
+            [alt]="series()?.last_episode_to_air?.name + 'Poster' || 'Unknown'"
+            width="500"
+            height="500"
+            class="object-cover object-center rounded-lg overflow-hidden transition-all ease-in-out duration-300 hover:brightness-105"
+          />
+
+          <!-- Runtime -->
+          <span
+            class="absolute top-2 left-2 bg-dark-90 text-dark-10 rounded-full px-4 py-0.5 border border-dark-30"
+            >{{ series()?.last_episode_to_air?.runtime || "N/A" }} min</span
+          >
+        </figure>
+
+        <!-- Name & Season - Episode -->
+        <div class="flex items-center justify-between gap-5">
+          <!-- Name -->
+          <h4 class="font-primary text-lg">
+            {{ series()?.last_episode_to_air?.name || "Unknown" }}
+          </h4>
+
+          <!--  Season - Episode -->
+          <div
+            class="flex items-center gap-1 rounded-lg border border-dark-30 px-3 py-0.5"
+          >
+            <span
+              >{{"S"+ series()?.last_episode_to_air?.season_number ||
+              "Unknown"}}</span
+            >
+
+            <span>
+              {{"EP." + series()?.last_episode_to_air?.episode_number ||
+              "Unknown"}}
+            </span>
+          </div>
+        </div>
+
+        <!-- Overview -->
+        <p class="text-dark-40 line-clamp-2">
+          {{ series()?.last_episode_to_air?.overview || "Unknown" }}
+        </p>
+      </li>
+
+      <!--============== NEXT EPISODE ON AIR ==============-->
+      <li class="flex flex-col gap-2.5">
+        <h4 class="font-primary text-lg text-primary-50">
+          Next Episode On Air
+        </h4>
+
+        <!-- Poster -->
+        <figure class="relative overflow-hidden">
+          <img
+            [src]="series()?.next_episode_to_air?.still_path ? posterPath + series()?.next_episode_to_air?.still_path : 'no-poster-available.jpg'"
+            [alt]="series()?.next_episode_to_air?.name + 'Poster' || 'Unknown'"
+            width="500"
+            height="500"
+            class="object-cover object-center rounded-lg overflow-hidden transition-all ease-in-out duration-300 hover:brightness-105"
+          />
+
+          <!-- Runtime -->
+          <span
+            class="absolute top-2 left-2 bg-dark-90 text-dark-10 rounded-full px-4 py-0.5 border border-dark-30"
+            >{{ series()?.next_episode_to_air?.runtime || "N/A" }} min</span
+          >
+        </figure>
+
+        <!-- Name & Season - Episode -->
+        <div class="flex items-center justify-between gap-5">
+          <!-- Name -->
+          <h4 class="font-primary text-lg">
+            {{ series()?.next_episode_to_air?.name || "Unknown" }}
+          </h4>
+
+          <!--  Season - Episode -->
+          <div
+            class="flex items-center gap-1 rounded-lg border border-dark-30 px-3 py-0.5"
+          >
+            <span
+              >{{"S"+ series()?.next_episode_to_air?.season_number ||
+              "Unknown"}}</span
+            >
+
+            <span>
+              {{"EP." + series()?.next_episode_to_air?.episode_number ||
+              "Unknown"}}
+            </span>
+          </div>
+        </div>
+
+        <!-- Overview -->
+        <p class="text-dark-40 line-clamp-2">
+          {{ series()?.next_episode_to_air?.overview || "Unknown" }}
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <!--============== SIMILAR SERIES ==============-->
+  <div class="flex flex-col gap-5 mt-3">
+    <h3 class="font-primary text-dark-10 font-medium text-xl">
+      You may also like
+    </h3>
+
+    <!-- Similar Movies -->
+    <ul
+      class="grid place-items-center grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-8"
+    >
+      @if (!errorState() && isLoading()) { @for (skeleton of limit; track
+      $index) {
+      <app-skeleton-card />
+      } }
+
+      <!--============== MOVIES SLIDER ==============-->
+      @if (!errorState() && !isLoading() && similarSeries().length > 1) { @for
+      (series of similarSeries().slice(0, limit.length); track series.id) {
+      <app-series-card [series]="series" />
+      } }
+    </ul>
+  </div>
+</article>

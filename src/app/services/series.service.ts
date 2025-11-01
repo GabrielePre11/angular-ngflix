@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SeriesResponse } from '../models/types/response.type';
+import { SeriesDetailType } from '../models/types/series-detail.type';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,18 @@ export class SeriesService {
   getTopSeries(): Observable<SeriesResponse> {
     return this.httpClient.get<SeriesResponse>(
       `${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}`
+    );
+  }
+
+  getSeries(id: number): Observable<SeriesDetailType> {
+    return this.httpClient.get<SeriesDetailType>(
+      `${this.baseUrl}/tv/${id}?api_key=${this.apiKey}`
+    );
+  }
+
+  getSimilarSeries(id: number): Observable<SeriesResponse> {
+    return this.httpClient.get<SeriesResponse>(
+      `${this.baseUrl}/tv/${id}/similar?api_key=${this.apiKey}`
     );
   }
 }

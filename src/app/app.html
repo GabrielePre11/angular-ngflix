@@ -4,7 +4,7 @@
   @if (isSidebarOpen()) {
   <app-sidebar
     [isSidebarOpen]="isSidebarOpen()"
-    (toggleSidebar)="closeSidebar()"
+    (toggleSidebar)="closeSidebar($event)"
   />
   }
 
@@ -15,7 +15,7 @@
     <!--============== HEADER ==============-->
     <app-header
       [isSidebarOpen]="isSidebarOpen()"
-      (openSidebar)="openSidebar()"
+      (openSidebar)="openSidebar($event)"
     />
 
     <!--============== MAIN CONTENT ==============-->

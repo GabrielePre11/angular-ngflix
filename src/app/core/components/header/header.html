@@ -86,12 +86,14 @@
   </div>
 
   <!--============== MOBILE MENU COMPONENT ==============-->
+  <!-- By calling the same function (openMobileMenu) when the child component emits the event, Angular detects the change ((prev) => !prev) and updates the template -->
   <app-mobile-menu
     [isMobileMenuOpen]="isMobileMenuOpen()"
     (closeMobileMenu)="openMobileMenu()"
   />
 
   <!--============== MOBILE SEARCHBAR ==============-->
+  <!-- By calling the same function (openMobileSearchbar) when the child component emits the event, Angular detects the change ((prev) => !prev) and updates the template -->
   <app-mobile-searchbar
     [isMobileSearchbarOpen]="isMobileSearchbarOpen()"
     (closeMobileSearchbar)="openMobileSearchbar()"

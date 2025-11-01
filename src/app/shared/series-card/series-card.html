@@ -6,6 +6,7 @@
     <img
       [src]="series().poster_path ? posterPath + series().poster_path : 'no-poster-available.jpg'"
       [alt]="series().name + ' Poster' || 'Unknown'"
+      [routerLink]="['/series', series().id || '']"
       width="500"
       height="500"
       loading="lazy"

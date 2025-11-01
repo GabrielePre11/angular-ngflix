@@ -16,11 +16,11 @@ export class App {
   protected title = 'angular-ngflix';
   isSidebarOpen = signal<boolean>(true);
 
-  openSidebar() {
-    this.isSidebarOpen.set(true);
+  // "Value" is emitted from the child component (sidebar). Once the value is emitted (with a click of the button), Angular detects the change and re-renders the component
+  openSidebar(value: boolean) {
+    this.isSidebarOpen.set(value);
   }
-
-  closeSidebar() {
-    this.isSidebarOpen.set(false);
+  closeSidebar(value: boolean) {
+    this.isSidebarOpen.set(value);
   }
 }
