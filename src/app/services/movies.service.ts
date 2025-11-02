@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@/app/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MovieResponse } from '../models/types/response.type';
 import { MovieDetailType } from '../models/types/movie-detail.type';
+import { MovieFiltersType } from '../models/types/movie-filters.type';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,30 @@ export class MoviesService {
   getHeroBanner(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
       `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}`
+    );
+  }
+
+  // GET: All Movies (with pagination & filters)
+  getAllMovies(
+    page: number,
+    filters: Partial<MovieFiltersType>
+  ): Observable<MovieResponse> {
+    let httpParams = new HttpParams();
+
+    if (filters) {
+      // @@ key: primary_release_year (or 'sort_by' or 'with_original_language')
+      // @@ value: eventTarget.value: '2025' || null (it's the option selected by the user)
+
+      for (const [key, value] of Object.entries(filters)) {
+        if (value !== undefined && value !== null) {
+          httpParams = httpParams.set(key, value.toString());
+        }
+      }
+    }
+
+    return this.httpClient.get<MovieResponse>(
+      `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&page=${page}`,
+      { params: httpParams }
     );
   }
 

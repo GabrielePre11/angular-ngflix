@@ -7,10 +7,26 @@ export const routes: Routes = [
   },
 
   {
+    path: 'movies',
+    loadComponent: () =>
+      import('@/app/features/movies/movies-page/movies-page').then(
+        (m) => m.MoviesPage
+      ),
+  },
+
+  {
     path: 'movie/:id',
     loadComponent: () =>
       import('@/app/features/movies/movie-detail-page/movie-detail-page').then(
         (m) => m.MovieDetailPage
+      ),
+  },
+
+  {
+    path: 'series',
+    loadComponent: () =>
+      import('@/app/features/tv/series-page/series-page').then(
+        (m) => m.SeriesPage
       ),
   },
 
@@ -21,17 +37,4 @@ export const routes: Routes = [
         (m) => m.SeriesDetailPage
       ),
   },
-
-  // {
-  //     path: 'movies',
-  //     loadComponent: () => import('./features/movies/movies.component').then((m) => m.MoviesComponent),
-  // },
-  // {
-  //     path: 'series',
-  //     loadComponent: () => import('./features/series/series.component').then((m) => m.SeriesComponent),
-  // },
-  // {
-  //     path: 'genres',
-  //     loadComponent: () => import('./features/genres/genres.component').then((m) => m.GenresComponent),
-  // },
 ];

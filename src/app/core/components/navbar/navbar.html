@@ -4,8 +4,8 @@
     routerLinkActive="active"
     [routerLinkActiveOptions]="{exact: true}"
     [routerLink]="link.path"
-    [attr.aria-current]="link.path === pathName ? 'page' : null"
-    [ngClass]="link.path === pathName ? 'text-primary-50' : 'text-neutral-300'"
+    [attr.aria-current]="link.path === pathName() ? 'page' : null"
+    [ngClass]="link.path === pathName() ? 'text-primary-50' : 'text-neutral-300'"
     class="cursor-pointer hover:text-primary-50 transition-colors duration-300 ease-in-out"
   >
     {{link.name}}

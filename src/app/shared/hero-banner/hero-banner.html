@@ -44,8 +44,9 @@
     <!--============== ACTIONS ==============-->
     <div class="flex items-center gap-3">
       <button
-        class="inline-flex items-center text-neutral-950 px-4 py-1 w-max bg-primary-50 uppercase rounded-lg font-medium text-lg transition-colors duration-300 ease-in-out hover:bg-[#d5a824]"
+        class="inline-flex items-center text-neutral-950 px-4 py-1 w-max bg-primary-50 uppercase rounded-lg font-medium text-lg transition-colors duration-300 ease-in-out hover:bg-primary-50"
         aria-label="Watch Now"
+        [routerLink]="['/movie', heroMovie()?.id]"
       >
         Watch Now
       </button>

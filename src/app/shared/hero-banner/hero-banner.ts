@@ -5,10 +5,11 @@ import { MoviesService } from '@/app/services/movies.service';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { posterPath } from '@/app/utils/posterPath';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hero-banner',
-  imports: [CommonModule, DecimalPipe],
+  imports: [CommonModule, DecimalPipe, RouterLink],
   templateUrl: './hero-banner.html',
   styleUrl: './hero-banner.css',
 })

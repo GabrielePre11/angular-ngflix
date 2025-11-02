@@ -129,3 +129,11 @@
 .header-action-login {
   @apply grid place-items-center p-1.5 text-white rounded-lg border border-neutral-500 transition-colors duration-300 hover:bg-neutral-800;
 }
+
+.toggle-filters-btn {
+  @apply inline-flex items-center gap-1.5 px-1 sm:px-3 py-1 text-lg border border-dark-30 rounded-lg hover:text-primary-50 transition-colors ease-in-out duration-300;
+}
+
+.prev-next-page-btn {
+  @apply flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-transparent border border-dark-30 text-primary-50 text-lg rounded-lg transition-colors ease-in-out duration-300 hover:bg-dark-80/10 disabled:pointer-events-none disabled:cursor-not-allowed;
+}

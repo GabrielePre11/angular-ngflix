@@ -4,11 +4,12 @@ import { MoviesService } from '@/app/services/movies.service';
 import { posterPath } from '@/app/utils/posterPath';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-hero-news',
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, RouterLink],
   templateUrl: './hero-news.html',
   styleUrl: './hero-news.css',
 })

@@ -1,6 +1,6 @@
 import { NAV_LIST } from '@/app/models/constants/nav-links';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
@@ -11,5 +11,5 @@ import { RouterLink, RouterModule } from '@angular/router';
 })
 export class Navbar {
   navList = NAV_LIST;
-  pathName = window.location.pathname;
+  pathName = signal(window.location.pathname);
 }
