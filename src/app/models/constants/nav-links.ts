@@ -1,4 +1,4 @@
-export const NAV_LIST: { name: string; path: string }[] = [
+export const NAV_LIST: { name: string; path?: string; fragment?: string }[] = [
   {
     name: 'All',
     path: '/',
@@ -13,6 +13,6 @@ export const NAV_LIST: { name: string; path: string }[] = [
   },
   {
     name: 'Genres',
-    path: '/genres',
+    fragment: '#genres',
   },
 ];

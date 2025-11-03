@@ -37,4 +37,10 @@ export const routes: Routes = [
         (m) => m.SeriesDetailPage
       ),
   },
+
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('@/app/features/search/search/search').then((m) => m.Search),
+  },
 ];

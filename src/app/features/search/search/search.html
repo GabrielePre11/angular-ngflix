@@ -1,0 +1,33 @@
+<section aria-label="Search" class="mt-3">
+  <!--============== TITLE ==============-->
+  <h3 class="flex flex-wrap items-center gap-2 font-primary text-2xl">
+    You've searched for:
+    <span class="uppercase text-primary-50">{{userQuery()}}</span>
+  </h3>
+
+  <!--============== STATES & MOVIES ==============-->
+  @if (results().length < 1) {
+  <div class="flex flex-col gap-5 mt-3 py-10">
+    <img src="not-found.svg" alt="Not Found SVG" />
+    <h3 class="font-primary text-center text-dark-10 font-medium text-xl">
+      There are no results for "{{userQuery()}}"
+    </h3>
+  </div>
+  }
+
+  <ul
+    class="grid place-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-5"
+  >
+    <!--============== LOADING STATE ==============-->
+    @if (!errorState() && isLoading()) { @for (skeleton of limit; track $index)
+    {
+    <app-skeleton-card />
+    } }
+
+    <!--============== MOVIES ==============-->
+    @if (!errorState() && !isLoading() && results().length > 1) { @for (result
+    of results(); track result.id) {
+    <app-searched-result-card [result]="result" />
+    } }
+  </ul>
+</section>

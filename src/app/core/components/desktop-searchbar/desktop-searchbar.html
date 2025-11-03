@@ -1,5 +1,7 @@
 <form
   class="hidden sm:flex items-center gap-2.5 bg-neutral-900 rounded-lg border border-neutral-500 px-3 py-1.5"
+  role="searchbox"
+  (submit)="handleSubmit($event, userQueryInput.value)"
 >
   <!-- Icon -->
   <lucide-angular
@@ -12,7 +14,10 @@
   <!-- User Input Field -->
   <input
     type="search"
+    inputmode="latin"
+    name="userQueryInput"
     placeholder="Search..."
     class="bg-transparent text-white outline-none sm:max-w-[130px] md:max-w-[150px] lg:max-w-[200px]"
+    #userQueryInput
   />
 </form>
