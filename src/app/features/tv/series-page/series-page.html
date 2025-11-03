@@ -1,1 +1,161 @@
-<p>series-page works!</p>
+<section aria-label="Movies Page" class="mt-3">
+  <!--============== TITLE & FILTERS ==============-->
+  <div class="relative flex items-center justify-between gap-5">
+    <h3 class="font-primary text-2xl md:text-3xl lg:text-4xl text-dark-10">
+      Browse Series
+    </h3>
+
+    <!--============== TOGGLE FILTERS BUTTON ==============-->
+    <button
+      class="toggle-filters-btn group"
+      [ngClass]="filtersOpen() ? 'text-primary-50' : ''"
+      aria-label="Open Filters"
+      (click)="toggleFilters()"
+    >
+      <span class="hidden sm:flex">Filters</span>
+
+      <!-- SVG -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-sliders-horizontal-icon lucide-sliders-horizontal transition-transform duration-300 ease-in-out group-hover:rotate-90"
+        [ngClass]="filtersOpen() ? 'rotate-90' : ''"
+      >
+        <path d="M10 5H3" />
+        <path d="M12 19H3" />
+        <path d="M14 3v4" />
+        <path d="M16 17v4" />
+        <path d="M21 12h-9" />
+        <path d="M21 19h-5" />
+        <path d="M21 5h-7" />
+        <path d="M8 10v4" />
+        <path d="M8 12H3" />
+      </svg>
+    </button>
+
+    <!--============== FILTERS COMPONENT ==============-->
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-live="polite"
+      [attr.aria-expanded]="filtersOpen()"
+      class="z-40"
+      [ngClass]="filtersOpen() ? 'absolute top-12 right-0' : 'hidden'"
+    >
+      <app-series-filters
+        [filtersOpen]="filtersOpen()"
+        (onFiltersChange)="updateFilters($event.type, $event.value)"
+        (onFiltersClose)="toggleFilters()"
+      />
+    </div>
+  </div>
+
+  <!--============== STATES & MOVIES ==============-->
+  @if (series().length < 1) {
+  <div class="flex flex-col gap-5 mt-3 py-10">
+    <img src="not-found.svg" alt="Not Found SVG" />
+    <h3 class="font-primary text-center text-dark-10 font-medium text-xl">
+      No series found
+    </h3>
+  </div>
+  }
+
+  <ul
+    class="grid place-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-5"
+  >
+    <!--============== LOADING STATE ==============-->
+    @if (!errorState() && isLoading()) { @for (skeleton of limit; track $index)
+    {
+    <app-skeleton-card />
+    } }
+
+    <!--============== MOVIES ==============-->
+    @if (!errorState() && !isLoading() && series().length > 1) { @for (movie of
+    series(); track movie.id) {
+    <app-series-card [series]="movie" />
+    } }
+  </ul>
+
+  <!--============== ACTIONS ==============-->
+  <div
+    class="flex items-center justify-between gap-5 mt-8 border-t border-dark-30 pt-5"
+  >
+    <!-- Previous Page Button -->
+    <button
+      class="prev-next-page-btn group"
+      aria-label="Go To Previous Page"
+      [disabled]="isLoading() || currentPage() === 1"
+      [attr.aria-disabled]="(isLoading() || currentPage() === 1) ? true : null"
+      (click)="goToPrevPage()"
+    >
+      <!-- Icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-arrow-big-left-icon lucide-arrow-big-left transition-transform duration-300 ease-in-out group-hover:-translate-x-1"
+      >
+        <path
+          d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"
+        />
+      </svg>
+
+      <span class="hidden sm:flex">Prev.</span>
+    </button>
+
+    <!-- Current Page / Total Pages -->
+    <div class="flex items-center gap-2.5 md:gap-3">
+      <span
+        class="grid place-items-center text-lg px-3 py-0.5 rounded-lg border border-dark-30"
+        >{{ currentPage() }}</span
+      >
+      <small class="text-lg text-primary-50">of</small>
+      <span
+        class="grid place-items-center text-lg px-3 py-0.5 rounded-lg border border-dark-30"
+        >{{ totalPages() }}</span
+      >
+    </div>
+
+    <!-- Next Page Button -->
+    <button
+      class="prev-next-page-btn group"
+      aria-label="Go To Previous Page"
+      [disabled]="isLoading() || currentPage() === totalPages()"
+      [attr.aria-disabled]="(isLoading() || currentPage() === totalPages()) ? true : null"
+      (click)="goToNextPage()"
+    >
+      <span class="hidden sm:flex">Next</span>
+
+      <!-- Icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-arrow-big-right-icon lucide-arrow-big-right transition-transform duration-300 ease-in-out group-hover:translate-x-1"
+      >
+        <path
+          d="M11 9a1 1 0 0 0 1-1V5.061a1 1 0 0 1 1.811-.75l6.836 6.836a1.207 1.207 0 0 1 0 1.707l-6.836 6.835a1 1 0 0 1-1.811-.75V16a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"
+        />
+      </svg>
+    </button>
+  </div>
+</section>

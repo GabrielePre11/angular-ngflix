@@ -1,0 +1,25 @@
+<ul
+  class="flex flex-col bg-neutral-900 gap-5 p-3 rounded-lg border border-dark-30 z-40 min-w-[250px] w-full max-w-[250px] overflow-hidden"
+>
+  @for (filter of seriesFilters; track filter.name) {
+  <li class="flex items-center gap-5 justify-between">
+    <!--============== LABEL ==============-->
+    <label [for]="filter.value" class="uppercase">{{ filter.name }}</label>
+
+    <!--============== SELECT==============-->
+    <select
+      [name]="filter.value + '_select'"
+      [id]="filter.value"
+      class="w-full text-right truncate line-clamp-1 text-dark-30"
+      (change)="changeFilters(filter.value, $event)"
+      (change)="closeFilters()"
+    >
+      <!--============== OPTIONS ==============-->
+      <option value="">All</option>
+      @for (option of filter.options; track option.value) {
+      <option [value]="option.value">{{ option.label }}</option>
+      }
+    </select>
+  </li>
+  }
+</ul>
