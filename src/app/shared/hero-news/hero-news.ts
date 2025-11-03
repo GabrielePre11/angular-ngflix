@@ -6,10 +6,11 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { HeroNewsSkeletonCard } from '../hero-news-skeleton-card/hero-news-skeleton-card';
 
 @Component({
   selector: 'app-hero-news',
-  imports: [CommonModule, DatePipe, RouterLink],
+  imports: [CommonModule, DatePipe, RouterLink, HeroNewsSkeletonCard],
   templateUrl: './hero-news.html',
   styleUrl: './hero-news.css',
 })

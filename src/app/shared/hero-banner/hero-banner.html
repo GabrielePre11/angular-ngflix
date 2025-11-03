@@ -1,3 +1,10 @@
+<!--============== SKELETON ==============-->
+@if (!errorState() && isLoading()) {
+<app-hero-banner-skeleton-card />
+}
+
+<!--============== BANNER ==============-->
+@else if (!errorState() && !isLoading() && heroMovie()) {
 <figure
   class="hidden sm:block relative sm:h-[300px] md:h-[350px] lg:h-[380px] rounded-lg overflow-hidden"
 >
@@ -53,3 +60,4 @@
     </div>
   </div>
 </figure>
+}

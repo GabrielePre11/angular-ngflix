@@ -1,3 +1,10 @@
+<!--============== SKELETON ==============-->
+@if (!errorState() && isLoading()) {
+<app-hero-news-skeleton-card />
+}
+
+<!--============== NEWS ==============-->
+@else if (!errorState() && !isLoading() && newsMovie()) {
 <article
   class="relative hidden opacity-0 xl:opacity-100 xl:flex flex-col lg:h-full bg-neutral-900 p-3 rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-primary-50 before:-rotate-1 before:rounded-lg before:-z-10 transition-opacity duration-200 ease-in-out"
 >
@@ -39,3 +46,5 @@
     </div>
   </div>
 </article>
+
+}

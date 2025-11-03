@@ -6,10 +6,11 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { posterPath } from '@/app/utils/posterPath';
 import { RouterLink } from '@angular/router';
+import { HeroBannerSkeletonCard } from '../hero-banner-skeleton-card/hero-banner-skeleton-card';
 
 @Component({
   selector: 'app-hero-banner',
-  imports: [CommonModule, DecimalPipe, RouterLink],
+  imports: [CommonModule, DecimalPipe, RouterLink, HeroBannerSkeletonCard],
   templateUrl: './hero-banner.html',
   styleUrl: './hero-banner.css',
 })
