@@ -3,7 +3,10 @@
 >
   @for (filter of moviesFilters; track filter.name) {
   <li class="flex items-center gap-5 justify-between">
+    <!--============== LABEL ==============-->
     <label [for]="filter.value" class="uppercase">{{ filter.name }}</label>
+
+    <!--============== SELECT==============-->
     <select
       [name]="filter.value + '_select'"
       [id]="filter.value"
@@ -11,6 +14,7 @@
       (change)="changeFilters(filter.value, $event)"
       (change)="closeFilters()"
     >
+      <!--============== OPTIONS ==============-->
       <option value="">All</option>
       @for (option of filter.options; track option.value) {
       <option [value]="option.value">{{ option.label }}</option>

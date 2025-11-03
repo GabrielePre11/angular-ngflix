@@ -53,7 +53,7 @@ export class MoviesService {
     );
   }
 
-  // GET: rending Now
+  // GET: Trending Now
   getTrendingMovies(): Observable<MovieResponse> {
     return this.httpClient.get<MovieResponse>(
       `${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}`

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -37,7 +37,7 @@ export class Sidebar {
   sideInfos = SIDE_LIST_INFOS;
 
   // Pathname
-  pathName = window.location.pathname;
+  pathName = signal(window.location.pathname);
 
   // Signals
   isSidebarOpen = input.required<boolean>();

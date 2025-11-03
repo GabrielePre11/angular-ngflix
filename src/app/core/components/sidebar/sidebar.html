@@ -32,38 +32,29 @@
   </div>
 
   <!--============== SIDEBAR NAVIGATION ==============-->
-  <div class="flex flex-col gap-3 mt-10">
+  <nav class="flex flex-col gap-3 mt-10">
     <small class="text-neutral-400 text-sm">Menu</small>
 
     <!--============== LINKS ==============-->
     <ul class="flex flex-col gap-5" role="navigation">
-      @for (link of sideList; track link.name) {
+      @for (link of sideList; track link.path) {
       <li
-        class="relative"
-        [ngClass]="pathName === link.path 
-          ? 'active-item before:content-[\'\']' 
-          : ''"
+        [routerLink]="link.path"
+        routerLinkActive="text-primary-50 active-link"
+        [routerLinkActiveOptions]="{exact: true}"
+        [attr.aria-current]="link.path === pathName() ? 'page' : null"
+        class="relative flex items-center gap-2.5 text-lg group cursor-pointer transition-colors duration-300 ease-in-out hover:text-primary-50"
       >
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: true}"
-          class="flex items-center gap-2.5 text-lg group"
-        >
-          <!-- Icon -->
-          <lucide-angular
-            [img]="link.icon"
-            [color]="pathName === link.path ? '#e7bc0f' : '#999999'"
-            aria-label="{{ link.name }} Icon"
-            aria-hidden="true"
-            class="group-hover:stroke-primary-50 transition-colors duration-300 ease-in-out"
-          ></lucide-angular>
-          <span
-            class="group-hover:text-amber-300 transition-colors duration-300 ease-in-out"
-            [ngClass]="pathName === link.path ? 'text-amber-300' : 'text-neutral-300'"
-            >{{ link.name }}</span
-          >
-        </a>
+        <!-- Icon -->
+        <lucide-angular
+          [img]="link.icon"
+          [ngStyle]="{'stroke': pathName() === link.path ? '#e7bc0f' : '#999999'}"
+          [attr.aria-label]="link.name + ' Icon'"
+          aria-hidden="true"
+          class="group-hover:stroke-primary-50 transition-colors duration-300 ease-in-out"
+        ></lucide-angular>
+
+        {{ link.name }}
       </li>
       }
     </ul>
@@ -76,7 +67,7 @@
       @for (link of sideInfos; track link.name) {
       <li
         class="relative cursor-pointer group"
-        [ngClass]="pathName === link.path 
+        [ngClass]="pathName() === link.path 
           ? 'active-item before:content-[\'\']' 
           : ''"
       >
@@ -84,19 +75,19 @@
           <!-- Icon -->
           <lucide-angular
             [img]="link.icon"
-            [color]="pathName === link.path ? '#e7bc0f' : '#999999'"
+            [color]="pathName() === link.path ? '#e7bc0f' : '#999999'"
             aria-label="{{ link.name }} Icon"
             aria-hidden="true"
             class="group-hover:stroke-primary-50 transition-colors duration-300 ease-in-out"
           ></lucide-angular>
           <span
             class="group-hover:text-amber-300 transition-colors duration-300 ease-in-out"
-            [ngClass]="pathName === link.path ? 'text-amber-300' : 'text-neutral-300'"
+            [ngClass]="pathName() === link.path ? 'text-amber-300' : 'text-neutral-300'"
             >{{ link.name }}</span
           >
         </a>
       </li>
       }
     </ul>
-  </div>
+  </nav>
 </aside>

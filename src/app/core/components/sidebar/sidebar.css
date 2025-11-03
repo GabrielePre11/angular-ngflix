@@ -1,1 +1,11 @@
-
+.active-link::before {
+  content: "";
+  width: 0.875rem;
+  height: 2rem;
+  background-color: var(--color-primary-50);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -1.75rem;
+  border-radius: 0.125rem;
+}
