@@ -1,10 +1,11 @@
-<figure class="hidden sm:block relative mt-10">
+<figure class="hidden sm:block relative mt-10 group overflow-hidden">
   <img
     [src]="bannerImage()"
     alt="Peaky Blinders Banner"
     width="500"
     height="500"
     loading="lazy"
-    class="object-cover mt-5"
+    [routerLink]="bannerImage().startsWith('P') ? ['/series/60574'] : ['/movie/276907']"
+    class="object-cover mt-5 cursor-pointer transition-all duration-300 ease-in-out group-hover:brightness-110"
   />
 </figure>
