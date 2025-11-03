@@ -13,10 +13,17 @@ import { SeriesResponse } from '@/app/models/types/response.type';
 import { Series } from '@/app/models/types/series.type';
 import { SeriesCard } from '@/app/shared/series-card/series-card';
 import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-trending-series',
-  imports: [SectionTitle, LucideAngularModule, SeriesCard, SkeletonCard],
+  imports: [
+    SectionTitle,
+    LucideAngularModule,
+    SeriesCard,
+    SkeletonCard,
+    RouterLink,
+  ],
   templateUrl: './trending-series.html',
   styleUrl: './trending-series.css',
 })

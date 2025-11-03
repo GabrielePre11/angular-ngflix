@@ -14,6 +14,7 @@ import { LucideAngularModule, ArrowLeft, ArrowRight } from 'lucide-angular';
 import { SeriesCard } from '@/app/shared/series-card/series-card';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-top-series',
@@ -23,6 +24,7 @@ import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
     SeriesCard,
     SectionTitle,
     SkeletonCard,
+    RouterLink,
   ],
   templateUrl: './top-series.html',
   styleUrl: './top-series.css',

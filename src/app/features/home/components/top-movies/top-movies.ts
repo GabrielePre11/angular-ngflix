@@ -14,6 +14,7 @@ import { LucideAngularModule, ArrowLeft, ArrowRight } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 import { MovieCard } from '@/app/shared/movie-card/movie-card';
 import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-top-movies',
@@ -23,6 +24,7 @@ import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
     SectionTitle,
     MovieCard,
     SkeletonCard,
+    RouterLink,
   ],
   templateUrl: './top-movies.html',
   styleUrl: './top-movies.css',

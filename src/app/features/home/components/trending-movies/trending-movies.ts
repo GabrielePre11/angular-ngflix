@@ -13,10 +13,17 @@ import { MovieCard } from '@/app/shared/movie-card/movie-card';
 import { LucideAngularModule, ArrowRight, ArrowLeft } from 'lucide-angular';
 import { SectionTitle } from '@/app/shared/section-title/section-title';
 import { SkeletonCard } from '@/app/shared/skeleton-card/skeleton-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-trending-movies',
-  imports: [MovieCard, LucideAngularModule, SectionTitle, SkeletonCard],
+  imports: [
+    MovieCard,
+    LucideAngularModule,
+    SectionTitle,
+    SkeletonCard,
+    RouterLink,
+  ],
   templateUrl: './trending-movies.html',
   styleUrl: './trending-movies.css',
 })

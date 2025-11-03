@@ -4,7 +4,10 @@
     <app-section-title title="{{title}}" />
 
     <!--============== VIEW ALL BUTTON ==============-->
-    <button class="inline-flex items-center text-white sm:text-lg gap-2 group">
+    <button
+      class="inline-flex items-center text-white sm:text-lg gap-2 group"
+      [routerLink]="['/movies']"
+    >
       View All
 
       <!-- Icon -->
