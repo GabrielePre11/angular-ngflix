@@ -43,4 +43,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('@/app/features/search/search/search').then((m) => m.Search),
   },
+
+  {
+    path: 'watchlist',
+    loadComponent: () =>
+      import('@/app/features/watchlist/watchlist').then((m) => m.Watchlist),
+  },
 ];

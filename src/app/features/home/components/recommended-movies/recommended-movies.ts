@@ -49,6 +49,9 @@ export class RecommendedMovies {
   errorState = signal<string | null>(null);
   recommendedMovies = signal<Movie[] | []>([]);
 
+  //============= CONSTANTS ============//
+  limit = Array.from({ length: 4 });
+
   constructor() {
     effect(() => {
       // Error & Loading
@@ -63,7 +66,7 @@ export class RecommendedMovies {
           if (Array.isArray(data.results)) {
             this.recommendedMovies.set(
               data.results
-                .slice(0, 4)
+                .slice(0, this.limit.length)
                 .sort((a, b) => b.popularity - a.popularity)
             );
           }

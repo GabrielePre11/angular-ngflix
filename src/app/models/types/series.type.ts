@@ -3,6 +3,7 @@ export interface Series {
   first_air_date: string;
   genre_ids: number[];
   id: number;
+  title?: string;
   name: string;
   origin_country: string[];
   original_language: string;
