@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '@/app/environments/environment';
+import { environment } from '../../app/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MovieResponse } from '../models/types/response.type';

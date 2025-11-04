@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../app/environments/environment';
 import { SearchResultType } from '../models/types/search-result.type';
 import { map } from 'rxjs/operators';
 
