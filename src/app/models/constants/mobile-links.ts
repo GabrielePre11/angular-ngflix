@@ -1,4 +1,4 @@
-export const NAV_LIST: { name: string; path: string }[] = [
+export const MOBILE_LINKS: { name: string; path: string }[] = [
   {
     name: 'All',
     path: '/',
@@ -10,5 +10,9 @@ export const NAV_LIST: { name: string; path: string }[] = [
   {
     name: 'Series',
     path: '/series',
+  },
+  {
+    name: 'Watchlist',
+    path: '/watchlist',
   },
 ];

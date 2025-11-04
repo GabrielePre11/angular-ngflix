@@ -1,4 +1,4 @@
-import { NAV_LIST } from '@/app/models/constants/nav-links';
+import { MOBILE_LINKS } from '@/app/models/constants/mobile-links';
 import { CommonModule } from '@angular/common';
 import { Component, input, output, signal } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
@@ -11,7 +11,7 @@ import { Logo } from '@/app/shared/logo/logo';
   styleUrl: './mobile-menu.css',
 })
 export class MobileMenu {
-  navList = NAV_LIST;
+  mobileNavList = MOBILE_LINKS;
   pathName = signal(window.location.pathname);
 
   isMobileMenuOpen = input.required<boolean>();

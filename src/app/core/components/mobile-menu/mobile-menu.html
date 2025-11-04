@@ -35,7 +35,7 @@
 
   <!--============== LINKS ==============-->
   <ul role="navigation" class="flex flex-col gap-10 p-10 text-4xl mt-8">
-    @for (link of navList; track link.path) {
+    @for (link of mobileNavList; track link.path) {
     <li
       class="transition-transform duration-300 ease-in-out hover:scale-105 w-max"
       (click)="onClose()"
