@@ -1,59 +1,36 @@
-# AngularNgflix
+# 🏠🪴 NgFlix - Angular Movies & Series Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+NgFlix is a web application that allows users to search, filter and view details for movies and TV shows.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🛠️ Techs
 
-```bash
-ng serve
-```
+[![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)](#)
+[![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)](#)
+[![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff)](#)
+[![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ✨ Features
+- 🎨 **Modern UI inspired by a Figma design** | Built with Angular 20, Tailwind CSS, and PrimeNG for toast notifications.<br>
+- 🌐 **TMBI API Integration** | Uses https://www.themoviedb.org/ for dynamic product data via HttpClient and RxJS.<br>
+- 🛍️ **Movies & Series Search/Filters/Explore/Watchlist** | Provides filtering, keyword search and Watchlist<br>
+- 🧠 **State Management with NgRx** | Powered by NgRx Store and Effects, with localStorage persistence for Watchlist.<br>
+- 📱 **Responsive Design** | Optimized for all devices — from mobile to desktop.<br>
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 📸 Screenshots
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![App Screenshot](public/screenshots/fullscreenHomepage.png)
+![App Screenshot](public/screenshots/heroPage.png)
+![App Screenshot](public/screenshots/tvSeriesFullScreen.png)
+![App Screenshot](public/screenshots/moviesPage.png)
+![App Screenshot](public/screenshots/seriesPage.png)
+![App Screenshot](public/screenshots/movieFullScreen.png)
+![App Screenshot](public/screenshots/tvSeriesFullScreen.png)
+![App Screenshot](public/screenshots/MobileVersionFullScreen.png)
