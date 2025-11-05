@@ -1,6 +1,9 @@
 # 🍿🎬 NgFlix - Angular Movies & Series Web Application
 
-NgFlix is a web application that allows users to search, filter and view details for movies and TV shows.
+NgFlix is a web application that allows users to search, filter, save and view details for movies and TV shows built with Angular 20, TypeScript, and TailwindCSS. 
+The design was inspired by a Figma project: https://www.figma.com/design/sN4wndevyr97MI9ht5LP4b/Movie---Series-Streaming-Platform--Community-?node-id=10004-16470&t=IbIN9mW7bHJAGu22-1
+
+This project helped me to deepen my knowledge of Angular (18+) and libraries like RxJx. DotEnv library was used to hide and save the TDMD API Key to the environment variables since Angular doesn't provide a native .env file like React and Next.js. Moreover, it's my first project built with PNPM instead of NPM!
 
 ---
 
@@ -10,7 +13,7 @@ NgFlix is a web application that allows users to search, filter and view details
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)](#)
 [![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)](#)
-[![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff)](#)
+[![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](#)
 [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#)
 
 ---
