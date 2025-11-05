@@ -1,4 +1,4 @@
-# 🏠🪴 NgFlix - Angular Movies & Series Web Application
+# 🍿🎬 NgFlix - Angular Movies & Series Web Application
 
 NgFlix is a web application that allows users to search, filter and view details for movies and TV shows.
 
